@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
+*{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #010100;
+    background-image: url('../images/bgauth.png');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Inter';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1E1E1E; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #010100; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #161616; 
+  }
+
+.auth{
+    width: 90%;
+    height: 90vh;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left{
+    width: 40%;
+    height: 100%;
+}
+
+.left a{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 30px;
+    transition: .3s ease-in-out;
+}
+
+.left a:hover{
+    color: rgb(196, 196, 196);
+}
+
+.right{
+    width: 60%;
+    height: 100%;
+}
+
+    .right .head{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 6px;
+    }
+
+        .head span:first-child{
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .head span:last-child{
+            font-size: 14px;
+        }
+
+    .right form{
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        margin-top: 10%;
+    }
+
+    .right form input{
+        all: unset;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.277);
+        color: white;
+        width: 100%;
+        padding: 10px 8px;
+        box-sizing: border-box;
+        font-weight: 500;
+        margin-bottom: 3%;
+    }
+
+      
+
+    .right .body{
+        width: 100%;
+        height: fit-content;
+        margin-top: 4%;
+    }
+
+
+    .right .foot{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .right .foot button{
+        all: unset;
+        width: 100%;
+        background: #F7C179;
+        text-align: center;
+        color: black;
+        padding: 10px 8px;
+        box-sizing: border-box;
+        font-weight: 500;
+        margin-bottom: 3%;
+        cursor: pointer;
+    }
+
+    .right .foot a{
+        color: white;
+        font-weight: 500;
+    }

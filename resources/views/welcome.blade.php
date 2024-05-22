@@ -54,9 +54,13 @@
             
     </head>
     <body>
-        <div class="ad">RECEIVE -50% ON FIRST PURCHASE</div>
 
-            
+        @if($ad && $ad->ad_content)
+            <div class="ad">
+                {{ $ad->ad_content }}
+            </div>
+        @endif
+    
         <div class="navbar-container">
             <div class="navbar">
                 <div class="links">

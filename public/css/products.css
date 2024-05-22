@@ -252,3 +252,83 @@ body{
     height: 40px;
     object-fit: cover;
 }
+
+
+.ad-head{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: #010100d3;
+    backdrop-filter: blur(6px);
+}
+
+.ad-head button{
+    all: unset;
+    color: inherit;
+    text-decoration: none;
+    background: #ffaf46;
+    color: black;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 6px;
+    transition: .3s ease-in;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ad-body{
+    width: 95%;
+    height: 30vh;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-top: 2%;
+}
+
+.ad-body a{
+    color: inherit;
+}
+
+.ad-body input{
+    all: unset;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.277);
+    color: white;
+    width: 100%;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    font-weight: 500;
+    margin-bottom: 3%;
+}
+
+.ad-body input[type="submit"]{
+    all: unset;
+    color: inherit;
+    text-decoration: none;
+    background: #ffaf46;
+    color: black;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 6px;
+    transition: .3s ease-in;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ad-body button{
+    all: unset;
+    color: inherit;
+    text-decoration: none;
+    background: #2A2A2A;
+    color: white;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 6px;
+    transition: .3s ease-in;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}

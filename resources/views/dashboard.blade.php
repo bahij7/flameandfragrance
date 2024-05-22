@@ -65,7 +65,7 @@
                     <a href="/dashboard/"><span class="material-symbols-outlined">list_alt</span> Orders</a>
                     <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
                     <span>Others</span>
-                    <a href="/dashboard/"><span class="material-symbols-outlined">ad</span> Advertise</a>
+                    <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
                     <a href="/dashboard/"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
                     <a href="/dashboard/"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
                     <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a>

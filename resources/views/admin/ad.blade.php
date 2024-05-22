@@ -45,6 +45,10 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+
+        .hidden-form {
+            display: none;
+        }
 </style>
      
 </head>
@@ -61,11 +65,11 @@
             </div>
             <div class="middle">
                 <span>Management</span>
-                <a href="/dashboard/products" class="selected"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
+                <a href="/dashboard/products"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">list_alt</span> Orders</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
                 <span>Others</span>
-                <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
+                <a href="/dashboard/ad" class="selected"><span class="material-symbols-outlined">ad</span> Advertise</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a>
@@ -96,49 +100,72 @@
             </div>
         </div>
 
-        <div class="product-head">
-            <h1>Products</h1>
-            <a href="">Create New Product</a>
+        <div class="ad-head">
+
+            <h1>Advertise</h1>
+            @if(!$ad)
+                <button type="button" id="showFormButton" >Create New Ad</button>
+            @endif
+
         </div>
 
-        <div class="search-bar">
-            <input type="text" placeholder="Search..">
-            <button type="submit"><span class="material-symbols-outlined">search</span></button>
+        <div class="ad-body">
+
+            @if($ad)
+                <p>The ad we'll be in the top of the website on the home page, <a href="/">click here to see it</a></p>
+                <form method="POST" action="{{ route('ad.update') }}" id="adForm">
+                    @csrf
+                    <input type="text" name="ad_content" value="{{ $ad->ad_content }}" required>
+                    <input type="submit" value="Save Changes">
+                </form>
+
+                <form method="POST" action="{{ route('ad.delete', $ad->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete Ad</button>
+                </form>
+            @else
+
+            <form method="POST" action="{{ route('ad.store') }}" id="adForm" class="hidden-form">
+                @csrf
+                <input type="text" name="ad_content" placeholder="Your ad goes here.." required>
+                <input type="submit" value="Save">
+                <button type="button" id="cancelButton">Cancel</button>
+            </form>
+
+            @endif
         </div>
 
-        <div class="product-body">
-            <div class="head">
-                <div class="name">Name</div>
-                <div class="description">Description</div>
-                <div class="tags">Tags</div>
-                <div class="colors">Colors</div>
-                <div class="ispublished">isPublished</div>
-                <div class="oldprice">Old Price</div>
-                <div class="price">Price</div>
-            </div>
-
-            <div class="body">
-                <div class="name">
-                    <img src='../images/bg.png' alt="">
-                    <span>Name</span>
-                </div>
-
-                <div class="description">
-                    Bougie Coeur Lorem ips...
-                </div>
-                <div class="tags">New</div>
-                <div class="colors">All</div>
-                <div class="ispublished">V</div>
-                <div class="oldprice">-</div>
-                <div class="price">35 MAD</div>
-            </div>
-        </div>
-
+    
 
     </div>
 
-
+   
     <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            // Button to show the form
+            const showFormButton = document.getElementById('showFormButton');
+
+            // Form element
+            const adForm = document.getElementById('adForm');
+
+            // Cancel button
+            const cancelButton = document.getElementById('cancelButton');
+
+            // Toggle form visibility when the "Create New Ad" button is clicked
+            showFormButton.addEventListener('click', function () {
+                adForm.classList.toggle('hidden-form');
+                showFormButton.style.display = 'none'; // Hide the button after showing the form
+            });
+
+            // Hide the form and show the "Create New Ad" button when the "Cancel" button is clicked
+            cancelButton.addEventListener('click', function () {
+                adForm.classList.add('hidden-form');
+                showFormButton.style.display = 'block'; // Show the button after hiding the form
+            });
+        });
+
+
         document.addEventListener('DOMContentLoaded', function() {
             var dropdown = document.querySelector('.dropdown');
             var dropdownMenu = document.querySelector('.dropdown-menu');

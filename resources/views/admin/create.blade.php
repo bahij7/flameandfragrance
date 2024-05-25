@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/products.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}"> 
     <style>
         .dropdown {
     position: relative;
@@ -45,10 +45,6 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
-
-        .hidden-form {
-            display: none;
-        }
 </style>
      
 </head>
@@ -65,11 +61,11 @@
             </div>
             <div class="middle">
                 <span>Management</span>
-                <a href="/dashboard/products"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
+                <a href="/dashboard/products" class="selected"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">list_alt</span> Orders</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
                 <span>Others</span>
-                <a href="/dashboard/ad" class="selected"><span class="material-symbols-outlined">ad</span> Advertise</a>
+                <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
                 <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a>
@@ -100,72 +96,41 @@
             </div>
         </div>
 
-        <div class="ad-head">
-
-            <h1>Advertise</h1>
-            @if(!$ad)
-                <button type="button" id="showFormButton" >Create New Ad</button>
-            @endif
-
+        <div class="product-head">
+            <h1>Creating New Product</h1>
         </div>
 
-        <div class="ad-body">
+        <div class="product-body">
+            <form action="" method="POST">
 
-            @if($ad)
-                <p>The ad we'll be in the top of the website on the home page, <a href="/">click here to see it</a></p>
-                <form method="POST" action="{{ route('ad.update') }}" id="adForm">
-                    @csrf
-                    <input type="text" name="ad_content" value="{{ $ad->ad_content }}" required>
-                    <input type="submit" value="Save Changes">
-                </form>
+                
+                    <div class="top">
+                        <input type="text" name="name" placeholder="Product's Name" required/>
+                        <textarea name="description" placeholder="Product's Description" required></textarea>
+                    </div>
 
-                <form method="POST" action="{{ route('ad.delete', $ad->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Delete Ad</button>
-                </form>
-            @else
+                    <div class="middle">
+                        <input type="tel" name="oldPrice" placeholder="Product's Old Price"/>
+                        <input type="tel" name="price" placeholder="Product's Price" required/>
+                    </div>
+                    <input type="file" name="image" required>
 
-            <form method="POST" action="{{ route('ad.store') }}" id="adForm" class="hidden-form">
-                @csrf
-                <input type="text" name="ad_content" placeholder="Your ad goes here.." required>
-                <input type="submit" value="Save">
-                <button type="button" id="cancelButton">Cancel</button>
+                    <div class="bottom">
+                        <span>by default your product is not published right now. <a href="">Publish Now</a> </span>
+                    </div>
+
+                    <button type="submit">Save</button>
             </form>
-
-            @endif
         </div>
 
-    
+       
+      
+
 
     </div>
 
-   
+
     <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            // Button to show the form
-            const showFormButton = document.getElementById('showFormButton');
-
-            // Form element
-            const adForm = document.getElementById('adForm');
-
-            // Cancel button
-            const cancelButton = document.getElementById('cancelButton');
-
-            // Toggle form visibility when the "Create New Ad" button is clicked
-            showFormButton.addEventListener('click', function () {
-                adForm.classList.toggle('hidden-form');
-                showFormButton.style.display = 'none'; // Hide the button after showing the form
-            });
-
-            // Hide the form and show the "Create New Ad" button when the "Cancel" button is clicked
-            cancelButton.addEventListener('click', function () {
-                adForm.classList.add('hidden-form');
-                showFormButton.style.display = 'block'; // Show the button after hiding the form
-            });
-        });
-
-
         document.addEventListener('DOMContentLoaded', function() {
             var dropdown = document.querySelector('.dropdown');
             var dropdownMenu = document.querySelector('.dropdown-menu');

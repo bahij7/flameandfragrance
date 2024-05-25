@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/products.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/advantages.css') }}"> 
     <style>
         .dropdown {
     position: relative;
@@ -69,8 +69,8 @@
                 <a href="/dashboard/"><span class="material-symbols-outlined">list_alt</span> Orders</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
                 <span>Others</span>
-                <a href="/dashboard/ad" class="selected"><span class="material-symbols-outlined">ad</span> Advertise</a>
-                <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
+                <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
+                <a href="/dashboard/advantages" class="selected"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a>
             
@@ -100,72 +100,25 @@
             </div>
         </div>
 
-        <div class="ad-head">
-
-            <h1>Advertise</h1>
-            @if(!$ad)
-                <button type="button" id="showFormButton" >Create New Ad</button>
-            @endif
-
+        
+        <div class="advantage-head">
+            <h1>Advantages</h1>
         </div>
 
-        <div class="ad-body">
+            
+        <div class="advantage-body">
+            <p>After all your modifications hit save and <a href="">click here to see the result</a></p>
 
-            @if($ad)
-                <p>The ad we'll be in the top of the website on the home page, <a href="/">click here to see it</a></p>
-                <form method="POST" action="{{ route('ad.update') }}" id="adForm">
-                    @csrf
-                    <input type="text" name="ad_content" value="{{ $ad->ad_content }}" required>
-                    <input type="submit" value="Save Changes">
-                </form>
-
-                <form method="POST" action="{{ route('ad.delete', $ad->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Delete Ad</button>
-                </form>
-            @else
-
-            <form method="POST" action="{{ route('ad.store') }}" id="adForm" class="hidden-form">
-                @csrf
-                <input type="text" name="ad_content" placeholder="Your ad goes here.." required>
-                <input type="submit" value="Save">
-                <button type="button" id="cancelButton">Cancel</button>
-            </form>
-
-            @endif
+            <div class="advantage">
+                
+            </div>
         </div>
-
     
 
     </div>
 
    
     <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            // Button to show the form
-            const showFormButton = document.getElementById('showFormButton');
-
-            // Form element
-            const adForm = document.getElementById('adForm');
-
-            // Cancel button
-            const cancelButton = document.getElementById('cancelButton');
-
-            // Toggle form visibility when the "Create New Ad" button is clicked
-            showFormButton.addEventListener('click', function () {
-                adForm.classList.toggle('hidden-form');
-                showFormButton.style.display = 'none'; // Hide the button after showing the form
-            });
-
-            // Hide the form and show the "Create New Ad" button when the "Cancel" button is clicked
-            cancelButton.addEventListener('click', function () {
-                adForm.classList.add('hidden-form');
-                showFormButton.style.display = 'block'; // Show the button after hiding the form
-            });
-        });
-
-
         document.addEventListener('DOMContentLoaded', function() {
             var dropdown = document.querySelector('.dropdown');
             var dropdownMenu = document.querySelector('.dropdown-menu');

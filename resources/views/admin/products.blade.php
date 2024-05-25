@@ -66,7 +66,7 @@
                 <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
                 <span>Others</span>
                 <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
+                <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
                 <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a>
             
@@ -98,7 +98,7 @@
 
         <div class="product-head">
             <h1>Products</h1>
-            <a href="">Create New Product</a>
+            <a href="/dashboard/products/create">Create New Product</a>
         </div>
 
         <div class="search-bar">
@@ -106,7 +106,7 @@
             <button type="submit"><span class="material-symbols-outlined">search</span></button>
         </div>
 
-        <div class="product-body">
+        {{-- <div class="product-body">
             <div class="head">
                 <div class="name">Name</div>
                 <div class="description">Description</div>
@@ -132,7 +132,7 @@
                 <div class="oldprice">-</div>
                 <div class="price">35 MAD</div>
             </div>
-        </div>
+        </div> --}}
 
 
     </div>

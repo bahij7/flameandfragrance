@@ -205,7 +205,7 @@ body{
 
 .product-body{
     width: 95%;
-    height: 100vh;
+    height: fit-content;
     background: #2A2A2A;
     border-radius: 20px;
     box-sizing: border-box;
@@ -223,12 +223,35 @@ body{
     width: 25%;
 }
 
+.name a{
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .description{
     width: 25%;
 }
 
 .tags, .colors, .ispublished, .oldprice, .price{
     width: 10%;
+}
+
+.ispublished span{
+    font-size: 20px;
+}
+
+.ispublished .public{
+    color: #4BB543;
+}
+
+.ispublished .private{
+    color: #fe2e2e;
+}
+
+.body .oldprice{
+    text-decoration: line-through;
 }
 
 

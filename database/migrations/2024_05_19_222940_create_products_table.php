@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->enum('tags', ['New', 'Hot'])->nullable();
-            $table->foreignId('pack_id')->constrained('packs')->onDelete('cascade');
+            $table->foreignId('pack_id')->nullable()->constrained('packs')->onDelete('cascade');
             $table->decimal('oldPrice', 10, 2)->nullable();
-            $table->decimal('price', 10, 2)->nullable();
+            $table->decimal('price', 10, 2);
             $table->json('colors')->nullable();
-            $table->boolean('isPublished')->default(true);
+            $table->boolean('isPublished')->default(false);
             $table->string('image')->nullable();
             $table->timestamps();
         });

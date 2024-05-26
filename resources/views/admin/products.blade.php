@@ -9,7 +9,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/products.css') }}"> 
     <style>
-        .dropdown {
+    .dropdown {
     position: relative;
     display: inline-block;
 }
@@ -106,7 +106,7 @@
             <button type="submit"><span class="material-symbols-outlined">search</span></button>
         </div>
 
-        {{-- <div class="product-body">
+        <div class="product-body">
             <div class="head">
                 <div class="name">Name</div>
                 <div class="description">Description</div>
@@ -116,23 +116,49 @@
                 <div class="oldprice">Old Price</div>
                 <div class="price">Price</div>
             </div>
+            @foreach($products as $product)
 
             <div class="body">
                 <div class="name">
-                    <img src='../images/bg.png' alt="">
-                    <span>Name</span>
+                    <a href="{{ route('product.show', $product->id) }}">
+                        <img src="{{ asset('images/bg.png') }}" alt="">
+                        <span>{{ $product->name }}</span>
+                    </a>
                 </div>
 
                 <div class="description">
-                    Bougie Coeur Lorem ips...
+                    @if($product->description)
+                        {{$product->description}}
+                    @else
+                        -
+                    @endif
                 </div>
-                <div class="tags">New</div>
+                <div class="tags">
+                    @if($product->tags)
+                        {{$product->tags}}
+                    @else
+                        -
+                    @endif
+                </div>
                 <div class="colors">All</div>
-                <div class="ispublished">V</div>
-                <div class="oldprice">-</div>
-                <div class="price">35 MAD</div>
+                <div class="ispublished">
+                    @if($product->isPublished)
+                        <span class="material-symbols-outlined public">public</span>
+                    @else
+                    <span class="material-symbols-outlined private">lock</span>
+                    @endif
+                    </div>
+                <div class="oldprice">
+                    @if($product->oldPrice)
+                        {{$product->oldPrice}} MAD
+                    @else
+                        -
+                    @endif
+                </div>
+                <div class="price">{{$product->price}} MAD</div>
             </div>
-        </div> --}}
+            @endforeach
+        </div>
 
 
     </div>

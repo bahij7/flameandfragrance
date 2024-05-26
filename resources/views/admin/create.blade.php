@@ -101,22 +101,23 @@
         </div>
 
         <div class="product-body">
-            <form action="" method="POST">
+            <form action="{{route('product.store')}}" method="POST">
+                @csrf
 
                 
                     <div class="top">
                         <input type="text" name="name" placeholder="Product's Name" required/>
-                        <textarea name="description" placeholder="Product's Description" required></textarea>
+                        <textarea name="description" placeholder="Product's Description"></textarea>
                     </div>
 
                     <div class="middle">
                         <input type="tel" name="oldPrice" placeholder="Product's Old Price"/>
                         <input type="tel" name="price" placeholder="Product's Price" required/>
                     </div>
-                    <input type="file" name="image" required>
+                    <input type="file" name="image">
 
                     <div class="bottom">
-                        <span>by default your product is not published right now. <a href="">Publish Now</a> </span>
+                        <span>by default your product is not published right now.</span>
                     </div>
 
                     <button type="submit">Save</button>

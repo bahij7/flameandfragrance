@@ -65,7 +65,7 @@
             <div class="navbar">
                 <div class="links">
                     <a href="/">HOME</a>
-                    <a href="/">PRODUCTS</a>
+                    <a href="/products">PRODUCTS</a>
                     <a href="#contact">CONTACT</a>
                 </div>
 
@@ -173,7 +173,6 @@
                         <p>WINTER JOY</p>
                         <p>120MAD <i>190MAD</i></p>
                     </div>
-                    <div class="right"></div>
                 </div>
             </div>
 
@@ -277,7 +276,8 @@
             <div>Get in touch with us.</div>
         </div>
         <div class="contact-right">
-            <form action="">
+            <form action="" method="POST">
+                @csrf
                 <input type="text" placeholder="Full Name">
                 <input type="email" placeholder="Email">
                 <input type="tel" placeholder="Phone Number">

@@ -210,6 +210,10 @@ body{
             padding-inline: 8px;
             box-sizing: border-box;
         }
+        .card .details i{
+            text-decoration: line-through;
+            font-size: 12px;
+        }
 
 
 .products{

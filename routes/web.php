@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\BasicController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdvantagesController;
 use App\Http\Controllers\ProductController;
@@ -16,16 +17,17 @@ Route::get('/products', [ProductController::class, 'index']);
 
 
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/dashboard/products', [ProductController::class, 'fetch']);
+    Route::get('/dashboard/products', [ProductController::class, 'fetch'])->name('product.index');
     Route::get('/dashboard/products/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/dashboard/products/create', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/dashboard/products/edit/{id}', [ProductController::class, 'edit']);
-    Route::get('/dashboard/products/{slug}', [ProductController::class, 'show'])->name('product.show');
-    Route::delete('/dashboard/products/{id}', [ProductController::class, 'destroy']);
+
+    Route::get('/dashboard/products/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::post('/dashboard/products/edit/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::put('/dashboard/products/{id}/publish', [ProductController::class, 'publish'])->name('product.publish');
+    Route::get('/dashboard/products/view/{id}', [ProductController::class, 'show'])->name('product.show');
+    Route::delete('/dashboard/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
     Route::get('/dashboard/ad', [AdsController::class, 'index']);
     Route::post('/dashboard/ad/store', [AdsController::class, 'store'])->name('ad.store');

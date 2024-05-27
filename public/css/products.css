@@ -238,6 +238,31 @@ body{
     width: 10%;
 }
 
+    .tags .new{
+        font-size: 12px;
+        font-weight: 800;
+        background: #4BB543;
+        color: #10350d;
+        border: 1px solid #63df5a;
+        width: fit-content;
+        padding: 4px 8px;
+        box-sizing: border-box;
+        border-radius: 14px;
+    }
+
+    
+    .tags .hot{
+        font-size: 12px;
+        font-weight: 800;
+        background: #DD4124;
+        color: #811d0b;
+        border: 1px solid #f7573b;
+        width: fit-content;
+        padding: 4px 8px;
+        box-sizing: border-box;
+        border-radius: 14px;
+    }
+
 .ispublished span{
     font-size: 20px;
 }
@@ -274,6 +299,13 @@ body{
     width: 40px;
     height: 40px;
     object-fit: cover;
+    background: #1E1E1E;
+}
+
+.name .img{
+    width: 40px;
+    height: 40px;
+    background: #1E1E1E;
 }
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flame & Fragrance | Dashboard</title>
+    <title>Products | Flame & Fragrance</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -59,7 +59,7 @@
             <div class="links">
                 <a href="/">HOME</a>
                 <a href="/products">PRODUCTS</a>
-                <a href="#contact">CONTACT</a>
+                <a href="/#contact">CONTACT</a>
             </div>
 
             <div class="actions">
@@ -104,7 +104,20 @@
                 
             
             <div class="card">
-                <div class="img">img</div>
+                <div class="img">
+                    <div class="tags">
+                        @if($product->tags)
+                            @if($product->tags === 'New')
+                                <div class="new">{{$product->tags}}</div>
+                            @else
+                                <div class="hot">{{$product->tags}}</div>
+                            @endif
+                        @else
+                            
+                        @endif
+                    </div>
+                    <img src="{{asset($product->image)}}">
+                </div>
                 <div class="details">
                     <div class="left">
                         <p>{{$product->name}}</p>

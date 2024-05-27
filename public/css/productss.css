@@ -56,6 +56,7 @@ body{
     backdrop-filter: blur(6px);
     position: sticky;
     top: 0px;
+    z-index: 10;
 }
 
 .navbar{
@@ -151,7 +152,7 @@ body{
     height: fit-content;
     margin-top: 2%;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
@@ -165,12 +166,53 @@ body{
     /* min-height: 450px;
     max-height: 500px; */
     margin-bottom: 2%;
+    cursor: pointer;
 }
 
     .card .img{
         width: 100%;
         height: 85%;
         background: #1E1E1E;
+    }
+
+
+    .card .img .tags .new{
+        position: absolute;
+        z-index: 1;
+        margin-left: 4px;
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 800;
+        background: #4BB543;
+        color: #10350d;
+        border: 1px solid #63df5a;
+        width: fit-content;
+        padding: 4px 8px;
+        box-sizing: border-box;
+        border-radius: 14px;
+    }
+
+    
+    .card .img .tags .hot{
+        position: absolute;
+        z-index: 1;
+        margin-left: 4px;
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 800;
+        background: #DD4124;
+        color: #811d0b;
+        border: 1px solid #f7573b;
+        width: fit-content;
+        padding: 4px 8px;
+        box-sizing: border-box;
+        border-radius: 14px;
+    }
+
+    .card .img img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .card .details{
@@ -183,6 +225,11 @@ body{
         gap: 12px;
         padding-inline: 8px;
         box-sizing: border-box;
+    }
+
+    .card .details p:first-child{
+        font-size: 20px;
+        font-weight: 600;
     }
 
     .card .details i{

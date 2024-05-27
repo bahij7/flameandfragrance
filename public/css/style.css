@@ -210,6 +210,12 @@ body{
             padding-inline: 8px;
             box-sizing: border-box;
         }
+
+        .card .details p:first-child{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
         .card .details i{
             text-decoration: line-through;
             font-size: 12px;

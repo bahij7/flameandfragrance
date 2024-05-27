@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flame & Fragrance | Dashboard</title>
+    <title>New Product | Flame & Fragrance</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -101,23 +101,42 @@
         </div>
 
         <div class="product-body">
-            <form action="{{route('product.store')}}" method="POST">
+            <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                
+               
+
                     <div class="top">
-                        <input type="text" name="name" placeholder="Product's Name" required/>
+                        <input type="text" name="name" placeholder="Product's Name*" required/>
                         <textarea name="description" placeholder="Product's Description"></textarea>
                     </div>
 
                     <div class="middle">
-                        <input type="tel" name="oldPrice" placeholder="Product's Old Price"/>
-                        <input type="tel" name="price" placeholder="Product's Price" required/>
+                        <input type="number" name="oldPrice" placeholder="Product's Old Price"/>
+                        <input type="number" name="price" placeholder="Product's Price*" required/>
+                        <select name="tags">
+                            <option value="" selected>Product's Tag</option>
+                            <option value="New">New</option>
+                            <option value="Hot">Hot</option>
+                        </select>
+
+                        <select id="pack_id" name="pack_id">
+                            <option value="" selected>Product's Pack</option>
+                            @foreach($packs as $pack)
+                                <option value="{{ $pack->id }}">{{ $pack->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <input type="file" name="image">
+                    
+                    <div class="file-container">
+                        <span>Product's Image</span>
+                        <label for="file" class="file-label">Choose file</label>
+                        <input type="file" id="file" class="file-input" name="image" onchange="displayFileName()">
+                        <span class="file-name" id="file-name"></span>
+                    </div>
 
                     <div class="bottom">
-                        <span>by default your product is not published right now.</span>
+                        <span><span class="material-symbols-outlined">warning</span> by default your product is not published right now, to publish it you need to head to the edit page after creating it</span>
                     </div>
 
                     <button type="submit">Save</button>
@@ -132,6 +151,13 @@
 
 
     <script>
+
+        function displayFileName() {
+            const fileInput = document.getElementById('file');
+            const fileName = document.getElementById('file-name');
+            fileName.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : '';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             var dropdown = document.querySelector('.dropdown');
             var dropdownMenu = document.querySelector('.dropdown-menu');

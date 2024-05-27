@@ -5,26 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\Pack;
 
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::all();
+        $products = Product::where('isPublished', true)->get();
         return view('pages.products', compact('products'));
     }
 
     public function create(){
-        return view('admin.create');
+        $packs = Pack::all();
+        return view('admin.create', compact('packs'));
     }
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'required',
-            'price' => 'required'
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'oldPrice' => 'nullable|numeric',
+            'tag' => 'nullable|string|max:255',
+            'pack_id' => 'nullable|integer|exists:packs,id',
+            'image' => 'nullable|mimes:png,jpg,jpeg|max:10480',
         ]);
 
+        $baseSlug = Str::slug($request->name);
         do {
-            $slug = Str::random(12);
+            $slug = $baseSlug . '-' . Str::random(8);
         } while (Product::where('slug', $slug)->exists());
 
         $product = new Product();
@@ -33,7 +41,17 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->oldPrice = $request->oldPrice;
         $product->price = $request->price;
-        $product->pack_id = null;
+        $product->tags = $request->tags;
+        $product->pack_id = $request->pack_id;
+
+        $filePath = null; 
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->move('images', $fileName);
+            $filePath = 'images/' . $fileName;
+            $product->image = $filePath;
+        }
         
         $product->save();
 
@@ -53,4 +71,67 @@ class ProductController extends Controller
         return view('admin.show', compact('product'));
     }
 
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $packs = Pack::all();
+        return view('admin.edit', compact('product', 'packs'));
+    }
+
+    public function update(Request $request, $id)
+    {
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'price' => 'required|numeric',
+        'oldPrice' => 'nullable|numeric',
+        'tag' => 'nullable|string|max:255',
+        'pack_id' => 'nullable|integer|exists:packs,id',
+        'image' => 'nullable|mimes:png,jpg,jpeg|max:10480',
+    ]);
+
+    $product = Product::findOrFail($id);
+
+    $product->name = $request->name;
+    $product->description = $request->description;
+    $product->oldPrice = $request->oldPrice;
+    $product->price = $request->price;
+    $product->tags = $request->tags;
+    $product->pack_id = $request->pack_id;
+
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->move('images', $fileName);
+        $filePath = 'images/' . $fileName;
+        $product->image = $filePath;
+    }
+
+    $product->save();
+
+    return redirect()->route('product.index')->with('success', 'Product updated successfully!');
+}
+
+
+public function destroy($id)
+{
+    $product = Product::findOrFail($id);
+
+    $product->delete();
+
+    return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
+}
+
+
+public function publish($id)
+{
+    $product = Product::findOrFail($id);
+
+    $product->isPublished = !$product->isPublished;
+
+    $product->save();
+
+    return redirect()->route('product.show', ['id' => $product->id])->with('success', 'Product publish status toggled successfully!');
+}
 }

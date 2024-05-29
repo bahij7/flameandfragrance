@@ -65,7 +65,7 @@
             <div class="actions">
                 <a href="/cart">
                     <span class="material-symbols-outlined">shopping_bag</span>
-                    @if(Auth::check())
+                    @if(Auth::check() && Auth::user()->cart)
                         ({{ Auth::user()->cart->items->count() }})
                     @endif
                 </a>

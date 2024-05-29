@@ -48,7 +48,7 @@ class CartController extends Controller
         $quantity = $request->input('quantity', 1);
         $color = $request->input('color', 'White');
 
-        $cart->items()->attach($product->id, ['quantity' => $quantity, 'color' => $color]);
+        $cart->items()->attach($product->id, ['quantity' => $quantity, 'color' => $color, 'price'=> $product->price]);
 
         return redirect()->route('cart')->with('success', 'Product added to cart!');
     }

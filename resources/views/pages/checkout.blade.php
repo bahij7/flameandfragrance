@@ -65,7 +65,7 @@
             <div class="actions">
                 <a href="/cart">
                     <span class="material-symbols-outlined">shopping_bag</span>
-                    @if(Auth::check())
+                    @if(Auth::check() && Auth::user()->cart)
                         ({{ Auth::user()->cart->items->count() }})
                     @endif
                 </a>
@@ -108,12 +108,12 @@
             <form action="{{ route('checkout.confirm') }}" method="POST">
             @csrf
                 <div class="top">
-                    <input type="text" placeholder="Name*" value="{{Auth::user()->name}}"/>
-                    <input type="tel" placeholder="Phone Number*" required/>
+                    <input type="text" placeholder="Name*" value="{{Auth::user()->name}}" readonly/>
+                    <input type="tel" name="phone" placeholder="Phone Number*" required/>
                 </div>
-                <input type="email" placeholder="Email" value="{{Auth::user()->email}}"/>
+                <input type="email" placeholder="Email" value="{{Auth::user()->email}}" readonly/>
 
-                <textarea placeholder="Address*" required></textarea>
+                <textarea placeholder="Address*" name="address" required></textarea>
                 <button type="submit">CONFIRM ORDER</button>
 
             

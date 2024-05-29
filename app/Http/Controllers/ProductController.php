@@ -83,7 +83,7 @@ class ProductController extends Controller
         
         $product->save();
 
-        return redirect()->route('product.index')->with('success', 'Product created successfully!');
+        return redirect()->route('product.show', $product->id)->with('success', 'Product created successfully!');
 
         
     }

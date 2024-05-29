@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
+use App\Models\orderLine;
 
 
 class CheckoutController extends Controller
@@ -24,35 +27,50 @@ class CheckoutController extends Controller
     public function confirm(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
             'phone' => 'required|string',
-            'email' => 'nullable|email',
             'address' => 'required|string',
         ]);
-
+    
+        $user = Auth::user();
+    
+        $cartItems = $user->cart->items;
+    
+        $totalOrderPrice = 0;
+    
+        do {
+            $orderNumber = 'ON' . strtoupper(Str::random(6));
+        } while (Order::where('order_number', $orderNumber)->exists());
+    
         $order = new Order();
-        $order->user_id = Auth::id();
-        $order->totalPrice = $this->calculateTotalPrice(); 
+        $order->user_id = $user->id;
+        $order->order_number = $orderNumber;
+        $order->phone = $request->phone;
         $order->address = $request->address;
-        $order->status = 'pending';
-        $order->order_number = uniqid();
-
+    
         $order->save();
-
-        foreach (Auth::user()->cart->items as $item) {
-            $order->products()->attach($item->id, [
-                'quantity' => $item->pivot->quantity,
-                'color' => $item->pivot->color,
-            ]);
+    
+        foreach ($cartItems as $item) {
+            $totalProductPrice = $item->price * $item->pivot->quantity;
+    
+            $totalOrderPrice += $totalProductPrice;
+    
+            $orderLine = new OrderLine();
+            $orderLine->order_id = $order->id;
+            $orderLine->product_id = $item->id;
+            $orderLine->quantity = $item->pivot->quantity;
+            $orderLine->price = $item->price;
+            $orderLine->color = $item->pivot->color;
+            $orderLine->total_price = $totalProductPrice;
+    
+            $orderLine->save();
         }
-
-        Auth::user()->cart->items()->detach();
-
-        return redirect()->route('order.confirmation', ['order' => $order->id]);
+    
+        $order->totalPrice = $totalOrderPrice;
+        $order->save();
+    
+        $user->cart->items()->detach();
+    
+        return redirect()->route('product')->with('success', 'Your order has been confirmed.');
     }
-
-    private function calculateTotalPrice()
-    {
-
-    }
+    
 }

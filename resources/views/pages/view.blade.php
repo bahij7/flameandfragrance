@@ -63,8 +63,12 @@
             </div>
 
             <div class="actions">
-                <a href="/cart">CART <span class="material-symbols-outlined">shopping_bag</span>@if(Auth::check()){({{ Auth::user()->cart->items->count() }})}@endif</a>
-                
+                <a href="/cart">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                    @if(Auth::check() && Auth::user()->cart)
+                        ({{ Auth::user()->cart->items->count() }})
+                    @endif
+                </a>                
                 @auth
                     <div class="dropdown">
                         <a id="userDropdown" class="dropdown-toggle"><span class="material-symbols-outlined">account_circle</span> {{ Auth::user()->name }}</a>

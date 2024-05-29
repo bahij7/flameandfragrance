@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('order_number')->unique();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->decimal('totalPrice', 10, 2)->default(0);
-            $table->enum('status', ['pending', 'processing', 'on_delivering', 'delivered', 'cancelled'])->default('pending');
             $table->string('address');
+            $table->string('phone');
+            $table->enum('status', ['pending', 'processing', 'on_delivering', 'delivered', 'cancelled'])->default('pending');
             $table->timestamps();
         });
     }

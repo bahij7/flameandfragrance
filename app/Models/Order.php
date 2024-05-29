@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
 use App\Models\User;
 use App\Models\orderLine;
+use App\Models\Product;
 
 class Order extends Model
 {
@@ -15,9 +16,10 @@ class Order extends Model
     
     protected $fillable = [
         'order_number',
-        'client_id',
-        'price',
+        'user_id',
+        'totalPrice',
         'status',
+        'address',
     ];
 
     public function user()

@@ -17,6 +17,8 @@ class orderLine extends Model
         'product_id',
         'quantity',
         'price',
+        'color',
+        'total_price',
     ];
 
     public function order()

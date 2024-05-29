@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Pack;
 use App\Models\orderLine;
+use App\Models\Order;
 use App\Models\Review;
 
 class Product extends Model
@@ -18,15 +19,17 @@ class Product extends Model
         'description',
         'oldPrice',
         'price',
-        'color'
+        'color',
+        'tags'
     ];
 
     public function carts()
     {
         return $this->belongsToMany(Cart::class, 'cart_product')
-                    ->withPivot('quantity', 'color')
+                    ->withPivot('quantity', 'color', "price")
                     ->withTimestamps();
     }
+
 
     public function pack()
     {

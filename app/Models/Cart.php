@@ -14,8 +14,7 @@ class Cart extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'client_id',
-        'price',
+        'user_id',
     ];
 
 
@@ -27,7 +26,7 @@ class Cart extends Model
     public function items()
     {
         return $this->belongsToMany(Product::class, 'cart_product')
-                    ->withPivot('quantity', 'color')
+                    ->withPivot('quantity', 'color', 'price')
                     ->withTimestamps();
     }
 

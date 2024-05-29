@@ -110,7 +110,7 @@
 
                     <div class="top">
                         <input type="text" name="name" placeholder="Product's Name*" value="{{$product->name}}" required/>
-                        <textarea name="description" placeholder="Product's Description" value="{{$product->description}}"></textarea>
+                        <textarea name="description" placeholder="Product's Description">{{$product->description}}</textarea>
                     </div>
 
                     <div class="middle">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Client;
-use App\Models\User;
+use App\Models\Product;
 use App\Models\Order;
 
 
@@ -18,18 +18,17 @@ class Cart extends Model
         'price',
     ];
 
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function order()
+    public function items()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsToMany(Product::class, 'cart_product')
+                    ->withPivot('quantity', 'color')
+                    ->withTimestamps();
     }
+
 }

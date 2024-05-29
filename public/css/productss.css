@@ -137,12 +137,14 @@ body{
 }
 
 
-.product-head a:last-child{
+.product-head select{
     background: #1E1E1E;
+    color: white;
     width: fit-content;
     padding: 14px 26px;
     font-weight: 500;
     cursor: pointer;
+    border: none;
 }
 
 
@@ -153,16 +155,30 @@ body{
     margin-top: 2%;
     display: flex;
     align-items: start;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.product-body a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 450px;
+    /* min-height: 450px;
+    max-height: 500px; */
+    margin-bottom: 2%;
+    cursor: pointer;
 }
 
 .product-body .card{
     display: flex;
     flex-direction: column;
-    width: 30%;
-    height: 450px;
+    width: 100%;
+    height: 100%;
     /* min-height: 450px;
     max-height: 500px; */
     margin-bottom: 2%;

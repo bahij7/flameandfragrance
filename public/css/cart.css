@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
+*{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #010100;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1E1E1E; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #010100; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #161616; 
+  }
+
+.ad{
+    width: 100%;
+    height: 6vh;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7C179;
+    color: black;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.navbar-container{
+    width: 100%;
+    height: 10vh;
+    background: #010100ba;
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+.navbar{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    transition: .3s ease-in-out;
+}
+
+.navbar a:hover{
+    color: rgb(196, 196, 196);
+}
+
+    .links{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .actions{
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+        .actions a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+            .actions a span{
+                font-size: 20px;
+            }
+
+
+.cart{
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: fit-content;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .cart-head{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .cart-head a{
+        color: inherit;
+    }
+
+    .cart-head span span{
+        font-weight: 600;
+    }
+
+    .cntr{
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        padding-block: 30px;
+        border-bottom: 1px solid #ffffff33;
+        border-top: 1px solid #ffffff33;
+    }
+
+    .cart-body{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 4%;
+    }
+
+
+    .cart-body .head{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .cart-body .head .product{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .cart-body .head .product img{
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+        
+    .cart-body .head .price{
+        width: 20%;
+    }
+
+    .cart-body .head .quantity{
+        width: 20%;
+    }
+
+    .cart-body .head .totalPrice{
+        width: 20%;
+    }
+
+    .cart-body .head .action{
+        width: 10%;
+    }
+
+
+.cart-foot{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .cart-foot a{
+        width: fit-content;
+        background: #F7C179;
+        color: black;
+        padding: 14px 26px;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+
+            .footer{
+                width: 100%;
+                height: 16vh;
+                border-top: 1px solid #ffffff33;
+            }
+            
+                .footer .top{
+                    width: 90%;
+                    height: 50%;
+                    margin: 0 auto;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: end;
+                    justify-content: space-between;
+                }
+            
+                    .footer .right{
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+            
+                .footer .bottom{
+                    width: 90%;
+                    height: 50%;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: start;
+                    justify-content: space-between;
+                    font-size: 14px;
+                }
+            
+                .footer a{
+                    color: white;
+                    transition: .4 ease-in-out;
+                }
+            
+                .footer a:hover{
+                    color: rgb(196, 196, 196);
+            
+                }
+            
+                

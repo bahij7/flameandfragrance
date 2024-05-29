@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
+*{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #010100;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1E1E1E; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #010100; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #161616; 
+  }
+
+.ad{
+    width: 100%;
+    height: 6vh;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7C179;
+    color: black;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.navbar-container{
+    width: 100%;
+    height: 10vh;
+    background: #010100ba;
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+.navbar{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    transition: .3s ease-in-out;
+}
+
+.navbar a:hover{
+    color: rgb(196, 196, 196);
+}
+
+    .links{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .actions{
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+        .actions a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+            .actions a span{
+                font-size: 20px;
+            }
+
+
+
+
+.checkout{
+    width: 90%;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: max-content;
+    margin: 0 auto;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 40px;
+}
+
+    .checkout .left{
+        width: 50%;
+        height: 100%
+    }
+
+        .left form{
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2%;
+        }
+
+        form input{
+            all: unset;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.277);
+            color: white;
+            width: 100%;
+            padding: 10px 8px;
+            box-sizing: border-box;
+            font-weight: 500;
+            margin-bottom: 3%;
+            font-size: 14px;
+        }
+
+        form  textarea{
+            all: unset;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.277);
+            color: white;
+            width: 100%;
+            min-height: 100px;
+            height: 150px;
+            max-height: 250px;
+            resize: vertical;
+            padding: 10px 8px;
+            box-sizing: border-box;
+            font-weight: 500;
+            margin-bottom: 3%;
+            overflow-wrap: break-word;
+        }
+
+
+        form button{
+            all: unset;
+            color: inherit;
+            text-decoration: none;
+            background: #ffaf46;
+            color: black;
+            box-sizing: border-box;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: .3s ease-in;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 2%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            form .top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 6px;
+            }
+
+            form .top input{
+                width: 50%;
+            }
+
+           
+
+
+
+
+    .checkout .right{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+        .checkout .right .card{
+            width: 100%;
+            height: 15vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .right .card .lside{
+            width: 18%;
+            height: 100%;
+        }
+        .right .card .lside img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .right .card .rside{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 14px;
+        }
+
+            .rside .name{
+                width: 100%;
+                font-size: 24px;
+                font-weight: 700;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .rside .name span{
+                font-size: 16px;
+                font-weight: 400;
+                opacity: 80%;
+            }
+
+            .rside .price{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            } 
+
+
+        .right .total{
+            margin-top: 2%;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .total span{
+                margin-top: 1%;
+                font-size: 14px;
+                font-weight: normal;
+            }
+
+
+
+
+.footer{
+    width: 100%;
+    height: 16vh;
+    border-top: 1px solid #ffffff33;
+}
+
+    .footer .top{
+        width: 90%;
+        height: 50%;
+        margin: 0 auto;
+        font-weight: 600;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+    }
+
+        .footer .right{
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+    .footer .bottom{
+        width: 90%;
+        height: 50%;
+        margin: 0 auto;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+
+    .footer a{
+        color: white;
+        transition: .4 ease-in-out;
+    }
+
+    .footer a:hover{
+        color: rgb(196, 196, 196);
+
+    }
+
+    

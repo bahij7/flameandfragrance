@@ -232,6 +232,10 @@ body{
 
 .description{
     width: 25%;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tags, .colors, .ispublished, .oldprice, .price{

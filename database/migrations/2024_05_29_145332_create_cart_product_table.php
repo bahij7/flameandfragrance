@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_lines', function (Blueprint $table) {
+        Schema::create('cart_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->integer('quantity');
-            $table->enum('color', ['White', 'Black', 'Red', 'Yellow', 'Green', 'Blue', 'Pink', 'Violet'])->default('White');
-            $table->decimal('price', 10, 2);
+            $table->string('color');
+            $table->unsignedInteger('quantity');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_lines');
+        Schema::dropIfExists('cart_product');
     }
 };

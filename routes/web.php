@@ -6,6 +6,8 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdvantagesController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\AdminMiddleware;
@@ -13,7 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [BasicController::class, 'index']);
-Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index'])->name('product');
+Route::get('/products/{slug}', [ProductController::class, 'view'])->name('product.view');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::delete('/cart/delete/{id}', [CartController::class, 'delete'])->name('cart.delete');
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm');
+
+
 
 
 Route::middleware([AdminMiddleware::class])->group(function () {

@@ -21,6 +21,13 @@ class Product extends Model
         'color'
     ];
 
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class, 'cart_product')
+                    ->withPivot('quantity', 'color')
+                    ->withTimestamps();
+    }
+
     public function pack()
     {
         return $this->belongsTo(Pack::class);

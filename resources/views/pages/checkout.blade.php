@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Products | Flame & Fragrance</title>
+    <title>Checking Out | Flame & Fragrance</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/productss.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">  
     <style>
         .actions {
             display: flex;
@@ -97,62 +97,70 @@
         </div>
     </div>
 
-    <div class="products">
-        <div class="product-head">
-            <a href="">SEE OUR PACKS 🎁</a>
-            <form action="{{ route('product') }}" method="GET">
-                <select name="sort" onchange="this.form.submit()">
-                    <option value="" selected>SORT BY</option>
-                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>LOW TO HIGH PRICE</option>
-                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>HIGH TO LOW PRICE</option>
-                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>NEWEST PRODUCTS</option>
-                </select>
+   
+
+    <div class="checkout">
+
+
+        <div class="left">
+            <span>Fill the form carrefully please.</span>
+            
+            <form action="{{ route('checkout.confirm') }}" method="POST">
+            @csrf
+                <div class="top">
+                    <input type="text" placeholder="Name*" value="{{Auth::user()->name}}"/>
+                    <input type="tel" placeholder="Phone Number*" required/>
+                </div>
+                <input type="email" placeholder="Email" value="{{Auth::user()->email}}"/>
+
+                <textarea placeholder="Address*" required></textarea>
+                <button type="submit">CONFIRM ORDER</button>
+
+            
             </form>
         </div>
 
-        <div class="product-body">
 
-            @foreach ($products as $product)
-                
-            <a href="{{ route('product.view', ['slug' => $product->slug]) }}">
+        <div class="right">
+            @php
+                $totalPrice = 0; 
+            @endphp
+            @foreach ($cartItems as $item)
+
             <div class="card">
-                <div class="img">
-                    <div class="tags">
-                        @if($product->tags)
-                            @if($product->tags === 'New')
-                                <div class="new">{{$product->tags}}</div>
-                            @else
-                                <div class="hot">{{$product->tags}}</div>
-                            @endif
-                        @else
-                            
-                        @endif
-                    </div>
-                    <img src="{{asset($product->image)}}">
+                <div class="lside">
+                    <img src="{{asset($item->image)}}">
                 </div>
-                <div class="details">
-                    <div class="left">
-                        <p>{{$product->name}}</p>
-                        <p>{{$product->price}} MAD
-                            @if ($product->oldPrice)
-                                <i>{{$product->oldPrice}} MAD</i>
-                            @endif
-                        </p>
+                <div class="rside">
+                    <div class="name">
+                        x{{$item->pivot->quantity}} {{$item->name}}
+                        <span>Color : {{$item->pivot->color}}</span>
                     </div>
+                    <div class="price">
+                        {{$item->price}} MAD
+                        <div class="tPrice">TOTAL PRICE : {{$item->price * $item->pivot->quantity}} MAD</div>
+                    </div>
+                    
                 </div>
             </div>
-        </a>
+            @php
+                $totalPrice += $item->price * $item->pivot->quantity;
+            @endphp
             @endforeach
 
-          
 
-            
-           
 
-            
+
+            <div class="total">
+                TOTAL PRICE : {{ number_format($totalPrice, 2) }} MAD
+                <span>🚨 Keep in mind that shipping all over morocco cost 35.00 MAD (Free delivery in Guelmim)</span>
+            </div>
         </div>
-    </div>
 
+
+
+
+    </div>
 
 
 

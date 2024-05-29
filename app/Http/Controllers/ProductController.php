@@ -9,9 +9,37 @@ use App\Models\Pack;
 
 class ProductController extends Controller
 {
-    public function index(){
-        $products = Product::where('isPublished', true)->get();
-        return view('pages.products', compact('products'));
+    public function index(Request $request)
+    {
+        $query = Product::where('isPublished', true);
+        $sort = $request->query('sort', '');
+    
+        if ($sort) {
+            switch ($sort) {
+                case 'price_asc':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'price_desc':
+                    $query->orderBy('price', 'desc');
+                    break;
+                case 'newest':
+                    $query->orderBy('created_at', 'desc');
+                    break;
+                default:
+                
+                    break;
+            }
+        }
+    
+        $products = $query->get(); 
+    
+        return view('pages.products', compact('products', 'sort'));
+    }
+
+    public function view($slug){
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $suggestedProducts = Product::where('slug', '!=', $slug)->inRandomOrder()->take(3)->get();
+        return view('pages.view', compact('product', 'suggestedProducts'));
     }
 
     public function create(){
@@ -55,7 +83,7 @@ class ProductController extends Controller
         
         $product->save();
 
-        return redirect()->back()->with('success', 'Product created successfully!');
+        return redirect()->route('product.index')->with('success', 'Product created successfully!');
 
         
     }

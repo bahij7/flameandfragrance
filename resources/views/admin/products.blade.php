@@ -97,7 +97,7 @@
         </div>
 
         <div class="product-head">
-            <h1>Products</h1>
+            <h1>Products ({{$products->count()}})</h1>
             <a href="/dashboard/products/create">Create New Product</a>
         </div>
 

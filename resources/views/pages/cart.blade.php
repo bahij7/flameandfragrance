@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/productss.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">  
     <style>
         .actions {
             display: flex;
@@ -97,61 +97,61 @@
         </div>
     </div>
 
-    <div class="products">
-        <div class="product-head">
-            <a href="">SEE OUR PACKS 🎁</a>
-            <form action="{{ route('product') }}" method="GET">
-                <select name="sort" onchange="this.form.submit()">
-                    <option value="" selected>SORT BY</option>
-                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>LOW TO HIGH PRICE</option>
-                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>HIGH TO LOW PRICE</option>
-                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>NEWEST PRODUCTS</option>
-                </select>
-            </form>
-        </div>
+    <div class="cart">
+        @if ($cartItems->isEmpty())
+            <div class="cart-head">
+                <span>🚨 Your cart is empty <a href="/products">Discover our products!</a></span>
+            </div>
 
-        <div class="product-body">
+        @else
+       
 
-            @foreach ($products as $product)
-                
-            <a href="{{ route('product.view', ['slug' => $product->slug]) }}">
-            <div class="card">
-                <div class="img">
-                    <div class="tags">
-                        @if($product->tags)
-                            @if($product->tags === 'New')
-                                <div class="new">{{$product->tags}}</div>
-                            @else
-                                <div class="hot">{{$product->tags}}</div>
-                            @endif
-                        @else
-                            
-                        @endif
-                    </div>
-                    <img src="{{asset($product->image)}}">
-                </div>
-                <div class="details">
-                    <div class="left">
-                        <p>{{$product->name}}</p>
-                        <p>{{$product->price}} MAD
-                            @if ($product->oldPrice)
-                                <i>{{$product->oldPrice}} MAD</i>
-                            @endif
-                        </p>
-                    </div>
+        <div class="cart-body">
+
+            <div class="cntr">
+                <div class="head">
+                    <div class="product">PRODUCT</div>
+                    <div class="price">PRICE</div>
+                    <div class="price">COLOR</div>
+                    <div class="quantity">QUANTITY</div>
+                    <div class="totalPrice">TOTAL PRICE</div>
+                    <div class="action"></div>
                 </div>
             </div>
-        </a>
-            @endforeach
 
-          
-
-            
-           
-
-            
+        @foreach ($cartItems as $item)
+            <div class="cntr">
+            <div class="head">
+                <div class="product"><img src="{{ asset($item->image) }}">{{ $item->name }}                    
+                </div>
+                <div class="price">{{ $item->price }} MAD</div>
+                <div class="price">{{ $item->pivot->color }}</div>
+                <div class="quantity">{{ $item->pivot->quantity }} </div>
+                <div class="totalPrice"> {{$item->price * $item->pivot->quantity }} MAD</div>
+                <div class="action">
+                    <form action="{{route('cart.delete', $item->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+            </div>
+        
+     
         </div>
+        <div class="cart-foot">
+            <a href="/checkout">PROCCED TO CHECKOUT</a>
+            <span>TOTAL PRICE : {{ $totalPrice }} MAD</span>
+        </div>
+        
+        @endif
+
+
+       
     </div>
+
 
 
 

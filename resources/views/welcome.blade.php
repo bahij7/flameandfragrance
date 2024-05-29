@@ -70,8 +70,13 @@
                 </div>
 
                 <div class="actions">
-                    <a href="/"><span class="material-symbols-outlined">shopping_bag</span>(0)</a>
-                    
+                    <a href="/cart">
+                        <span class="material-symbols-outlined">shopping_bag</span>
+                        @if(Auth::check())
+                            ({{ Auth::user()->cart->items->count() }})
+                        @endif
+                    </a>
+                                        
                     @auth
                         <div class="dropdown">
                             <a id="userDropdown" class="dropdown-toggle"><span class="material-symbols-outlined">account_circle</span> {{ Auth::user()->name }}</a>
@@ -117,43 +122,45 @@
     <div class="picks">
         <div class="picks-head">
             <span>TOP PICKS 🔥</span>
-            <span>POPULAR</span>
             <span>PACKS</span>
         </div>
         <div class="picks-body">
 
+            @foreach ($hotProducts as $product)
+                
+            <a href="{{ route('product.view', ['slug' => $product->slug]) }}">
             <div class="card">
-                <div class="img"></div>
+                <div class="img">
+                    <div class="tags">
+                        @if($product->tags)
+                            @if($product->tags === 'New')
+                                <div class="new">{{$product->tags}}</div>
+                            @else
+                                <div class="hot">{{$product->tags}}</div>
+                            @endif
+                        @else
+                            
+                        @endif
+                    </div>
+                    <img src="{{asset($product->image)}}">
+                </div>
                 <div class="details">
                     <div class="left">
-                        <p>WINTER JOY</p>
-                        <p>120MAD <i>190MAD</i></p>
+                        <p>{{$product->name}}</p>
+                        <p>{{$product->price}} MAD
+                            @if ($product->oldPrice)
+                                <i>{{$product->oldPrice}} MAD</i>
+                            @endif
+                        </p>
                     </div>
-                    <div class="right"></div>
                 </div>
             </div>
+        </a>
+            @endforeach
 
-            <div class="card">
-                <div class="img"></div>
-                <div class="details">
-                    <div class="left">
-                        <p>WINTER JOY</p>
-                        <p>120MAD <i>190MAD</i></p>
-                    </div>
-                    <div class="right"></div>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="img"></div>
-                <div class="details">
-                    <div class="left">
-                        <p>WINTER JOY</p>
-                        <p>120MAD <i>190MAD</i></p>
-                    </div>
-                    <div class="right"></div>
-                </div>
-            </div>
+        
+            
 
         </div>
     </div>
@@ -166,37 +173,38 @@
 
         <div class="products-body">
 
+            @foreach ($products as $product)
+                
+            <a href="{{ route('product.view', ['slug' => $product->slug]) }}">
             <div class="card">
-                <div class="img"></div>
+                <div class="img">
+                    <div class="tags">
+                        @if($product->tags)
+                            @if($product->tags === 'New')
+                                <div class="new">{{$product->tags}}</div>
+                            @else
+                                <div class="hot">{{$product->tags}}</div>
+                            @endif
+                        @else
+                            
+                        @endif
+                    </div>
+                    <img src="{{asset($product->image)}}">
+                </div>
                 <div class="details">
                     <div class="left">
-                        <p>WINTER JOY</p>
-                        <p>120MAD <i>190MAD</i></p>
+                        <p>{{$product->name}}</p>
+                        <p>{{$product->price}} MAD
+                            @if ($product->oldPrice)
+                                <i>{{$product->oldPrice}} MAD</i>
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>
+        </a>
+            @endforeach
 
-            <div class="card">
-                <div class="img"></div>
-                <div class="details">
-                    <div class="left">
-                        <p>WINTER JOY</p>
-                        <p>120MAD <i>190MAD</i></p>
-                    </div>
-                    <div class="right"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img"></div>
-                <div class="details">
-                    <div class="left">
-                        <p>WINTER JOY</p>
-                        <p>120MAD <i>190MAD</i></p>
-                    </div>
-                    <div class="right"></div>
-                </div>
-            </div>
         </div>
 
         <div class="products-foot">

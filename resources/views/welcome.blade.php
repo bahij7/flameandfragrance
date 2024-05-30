@@ -246,37 +246,31 @@
             <div class="question">
                 <div class="q">When do I pay for my order?</div>
                 <div class="a">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                </div>
+                    You pay for your order when it gets delivered to you. We use a payment method called cash on delivery, which means you give the money to the delivery person when they bring your order to your door.                </div>
             </div>
 
             <div class="question">
                 <div class="q">What are your products made of?</div>
                 <div class="a">
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are g
+                    We make customized candles in various colors. You can choose your favorite color, and we will create a candle just for you. Our candles also have a pleasant scent.
                 </div>
             </div>
 
             <div class="question">
                 <div class="q">Are there any special discounts for events</div>
                 <div class="a">
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.                </div>
-            </div>
-
-            <div class="question">
-                <div class="q">What are your products made of?</div>
-                <div class="a">
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are g
+                    Yes, we offer special discounts during certain events. You can get discounts for Eid al-Adha, Eid al-Fitr, and New Year. These discounts are our way of celebrating these special occasions with you.
                 </div>
             </div>
+            <div class="question">
+                <div class="q">Can I return or exchange a product?</div>
+                <div class="a">
+                    If your order is totally destroyed, you can get your money back or we can send you a new order. Just contact our customer service, and they will help you with the process.</div>
+            </div>
 
 
         </div>
 
-
-        <div class="faq-foot" id="contact">
-            <a href="">Do you have a question? Ask here, and we'll respond quickly.</a>
-        </div>
     </div>
 
     <div class="contact">
@@ -302,11 +296,6 @@
             <div class="top">
                 <div class="left">
                     Flame & Fragrance © 2024
-                </div>
-                <div class="right">
-                    Switch to
-                    <a href="">Arabic</a>
-                    <a href="">French</a>
                 </div>
             </div>
             <div class="bottom">

@@ -95,6 +95,16 @@ body{
     gap: 10px;
 }
 
+.middle .selected{
+    background: #F7C179;
+    color: black;
+}
+
+.middle .selected:hover{
+    background: #ffaf46;
+    color: black;
+}
+
 
 .top a, .middle a{
     width: 100%;

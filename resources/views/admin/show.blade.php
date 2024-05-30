@@ -50,6 +50,12 @@
 </head>
 <body>
 
+    @if(session('success'))
+        <div class="popup-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="sidebar">
         <div class="logo">
             <a href="/"> FLAME & <br>FRAGRANCE</a>

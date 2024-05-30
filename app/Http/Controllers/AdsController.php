@@ -27,12 +27,12 @@ class AdsController extends Controller
 
     public function update(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'ad_content' => 'required|string|max:255',
         ]);
 
         $ad = Ad::first();
-        $ad->ad_content = $validated['ad_content'];
+        $ad->ad_content = $request->ad_content;
         $ad->save();
 
         return redirect('/dashboard/ad')->with('success', 'Ad updated successfully!');

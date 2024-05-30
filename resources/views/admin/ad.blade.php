@@ -54,6 +54,12 @@
 </head>
 <body>
 
+    @if(session('success'))
+        <div class="popup-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="sidebar">
         <div class="logo">
             <a href="/"> FLAME & <br>FRAGRANCE</a>
@@ -66,13 +72,11 @@
             <div class="middle">
                 <span>Management</span>
                 <a href="/dashboard/products"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">list_alt</span> Orders</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
+                <a href="/dashboard/orders"><span class="material-symbols-outlined">list_alt</span> Orders</a>
+                <a href="/dashboard/clients"><span class="material-symbols-outlined">group</span> Clients</a>
                 <span>Others</span>
+                <a href="/dashboard/users"><span class="material-symbols-outlined">group</span> Users</a>
                 <a href="/dashboard/ad" class="selected"><span class="material-symbols-outlined">ad</span> Advertise</a>
-                <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a>
             
             
             </div>
@@ -115,6 +119,7 @@
                 <p>The ad we'll be in the top of the website on the home page, <a href="/">click here to see it</a></p>
                 <form method="POST" action="{{ route('ad.update') }}" id="adForm">
                     @csrf
+                    @method('PUT')
                     <input type="text" name="ad_content" value="{{ $ad->ad_content }}" required>
                     <input type="submit" value="Save Changes">
                 </form>

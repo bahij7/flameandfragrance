@@ -63,12 +63,10 @@
                     <span>Management</span>
                     <a href="/dashboard/products"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
                     <a href="/dashboard/orders"><span class="material-symbols-outlined">list_alt</span> Orders</a>
-                    <a href="/dashboard/users"><span class="material-symbols-outlined">group</span> Users</a>
                     <a href="/dashboard/clients" class="selected"><span class="material-symbols-outlined">group</span> Clients</a>
                     <span>Others</span>
+                    <a href="/dashboard/users"><span class="material-symbols-outlined">group</span> Users</a>
                     <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
-                    <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
-                    <a href="/dashboard/faq"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
                 
                 
                 </div>

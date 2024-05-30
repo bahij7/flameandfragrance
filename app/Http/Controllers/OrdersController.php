@@ -66,4 +66,24 @@ class OrdersController extends Controller
 
         return redirect()->route('order.show', $order->id)->with('success', 'Order status updated successfully.');
     }
+
+
+    public function trackOrderPage()
+    {
+        return view('pages.track');
+    }
+
+    public function trackOrder(Request $request)
+    {
+        $orderNumber = $request->input('order_number');
+        $order = Order::where('order_number', $orderNumber)->first();
+
+        if (!$order) {
+            return redirect()->route('track.order')->with('error', 'The order number is not valid.');
+        }
+
+        return view('pages.track', compact('order'));
+    }
+
+    
 }

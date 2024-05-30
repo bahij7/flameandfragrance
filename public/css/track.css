@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
+*{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #010100;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1E1E1E; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #010100; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #161616; 
+  }
+
+.ad{
+    width: 100%;
+    height: 6vh;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7C179;
+    color: black;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.navbar-container{
+    width: 100%;
+    height: 10vh;
+    background: #010100ba;
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+.navbar{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    transition: .3s ease-in-out;
+}
+
+.navbar a:hover{
+    color: rgb(196, 196, 196);
+}
+
+    .links{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .actions{
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+        .actions a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+            .actions a span{
+                font-size: 20px;
+            }
+
+
+
+
+.track{
+    width: 90%;
+    min-height: 55vh;
+    height: 55vh;
+    max-height: 100vh;
+    margin: 0 auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.track-head{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+
+.track-body{
+    width: 100%;
+}
+
+.track-body form{
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.track-body input{
+    all: unset;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.277);
+    color: white;
+    width: 40%;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+.track-body button{
+    all: unset;
+    color: inherit;
+    text-decoration: none;
+    background: #F7C179;
+    color: black;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    transition: .3s ease-in;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+.track-foot{
+    margin-top: 2%;
+}
+
+
+
+            .footer{
+                width: 100%;
+                height: 16vh;
+                border-top: 1px solid #ffffff33;
+            }
+            
+                .footer .top{
+                    width: 90%;
+                    height: 50%;
+                    margin: 0 auto;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: end;
+                    justify-content: space-between;
+                }
+            
+                    .footer .right{
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+            
+                .footer .bottom{
+                    width: 90%;
+                    height: 50%;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: start;
+                    justify-content: space-between;
+                    font-size: 14px;
+                }
+            
+                .footer a{
+                    color: white;
+                    transition: .4 ease-in-out;
+                }
+            
+                .footer a:hover{
+                    color: rgb(196, 196, 196);
+            
+                }
+            
+                

@@ -29,6 +29,8 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm');
 Route::get('/confirmed', [CheckoutController::class, 'confirmed'])->name('checkout.confirmed');
 
+Route::get('/track', [OrdersController::class, 'trackOrderPage'])->name('track.order');
+Route::post('/track', [OrdersController::class, 'trackOrder'])->name('track.order.submit');
 
 
 

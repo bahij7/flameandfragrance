@@ -113,52 +113,57 @@
         </div>
 
         <div class="track-foot">
-            @if(session()->has('error'))
-                {{ session()->get('error') }}
-            @endif
+
+            <div class="error">
+                @if(session()->has('error'))
+                    {{ session()->get('error') }}
+                @endif
+            </div>
 
             @if (isset($order))
-                <div class="order-details">
-                    <h2>Order Details</h2>
-                    <p>Status: {{ $order->status }}</p>
-                    <p>Client Name: {{ $order->user->name }}</p>
-                    <p>Address: {{ $order->address }}</p>
-                    <p>Total Price: {{ $order->totalPrice }}</p>
-                    <h3>Products</h3>
-                    <ul>
-                        @foreach ($order->orderLines as $orderLine)
-                            <li>{{ $orderLine->product->name }} - Quantity: {{ $orderLine->quantity }}</li>
-                        @endforeach
-                    </ul>
+            <div class="order-details">
+                <div class="cntr">
+                    <div class="head">
+                        <div class="status">STATUS</div>
+                        <div class="client">CLIENT NAME</div>
+                        <div class="address">ADDRESS</div>
+                        <div class="totalPrice">TOTAL PRICE</div>
+                    </div>
                 </div>
+
+                <div class="cntr">
+                    <div class="body">
+                        <div class="status">{{ $order->status }}</div>
+                        <div class="client">{{ $order->user->name }}</div>
+                        <div class="address">{{ $order->address }}</div>
+                        <div class="totalPrice">{{ $order->totalPrice }}</div>
+                    </div>
+                </div>
+
+                    <div class="products-ordered">
+                        Products :
+                @foreach ($order->orderLines as $orderLine)
+                        <div class="card">
+                            <img src="{{asset($orderLine->product->image)}}"> x{{ $orderLine->quantity }} {{ $orderLine->product->name }} - {{ $orderLine->color }} 
+                        </div>
+
+                        
+                     @endforeach
+                    </div>
+                   
+                
+            </div>
             @endif
+
+
+            
+                
+          
         </div>
     </div>
 
 
 
-
-    <div class="footer">
-        <div class="top">
-            <div class="left">
-                Flame & Fragrance © 2024
-            </div>
-            <div class="right">
-                Switch to
-                <a href="">Arabic</a>
-                <a href="">French</a>
-            </div>
-        </div>
-        <div class="bottom">
-            <div class="left">
-            <a href=""> Privacy Policy</a>
-            </div>
-            <div class="right">
-                <a href="">Instagram</a>
-                <a href="">Tik Tok</a>
-            </div>
-        </div>
-    </div>  
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -53,7 +53,11 @@
         </style>    
 </head>
 <body>
-
+    @if(session('success'))
+        <div class="popup-message">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="navbar-container">
         <div class="navbar">
             <div class="links">

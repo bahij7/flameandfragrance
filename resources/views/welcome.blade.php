@@ -54,6 +54,11 @@
             
     </head>
     <body>
+        @if(session('success'))
+            <div class="popup-message">
+                {{ session('success') }}
+            </div>
+        @endif
 
         @if($ad && $ad->ad_content)
             <div class="ad">

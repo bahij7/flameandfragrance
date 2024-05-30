@@ -48,7 +48,6 @@ class CheckoutController extends Controller
         $order->address = $request->address;
     
         $order->save();
-        $orderLines = [];
 
         foreach ($cartItems as $item) {
             $totalProductPrice = $item->price * $item->pivot->quantity;
@@ -64,19 +63,15 @@ class CheckoutController extends Controller
             $orderLine->total_price = $totalProductPrice;
     
             $orderLine->save();
-            $orderLines[] = $orderLine;
         }
     
         $order->totalPrice = $totalOrderPrice;
         $order->save();
     
         $user->cart->items()->detach();
-        session([
-            'order' => $order,
-            'orderLines' => $orderLines,
-        ]);
+       
     
-        return redirect()->route('checkout.confirmed');
+        return redirect()->route('cart')->with('success', 'Your order is confirmed!');
     }
 
     public function confirmed() {

@@ -400,3 +400,37 @@ body{
     }
 
     
+
+
+    .popup-message{
+        position: fixed;
+           top: 10%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+           z-index: 100;
+           background: #1E1E1E;
+           border: 1px solid #3d3d3d;
+           padding: 20px 30px;
+           border-radius: 10px;
+           opacity: 0;
+           animation: fadeInOut 8s ease-in-out forwards;
+       }
+       
+       @keyframes fadeInOut {
+           0% {
+               top: 0;
+               opacity: 0;
+           }
+           20% {
+               top: 10%;
+               opacity: 1;
+           }
+           80% {
+               top: 10%;
+               opacity: 1;
+           }
+           100% {
+               top: 0%;
+               opacity: 0;
+           }
+       }

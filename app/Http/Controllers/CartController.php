@@ -57,8 +57,8 @@ class CartController extends Controller
     {
 
         $user = Auth::user();
-        $user->cart->items()->detach($id);
+        $user->cart->items()->detach();
     
-        return redirect()->route('cart')->with('success', 'Item removed from cart successfully.');
+        return redirect()->route('cart')->with('success', 'Items removed from cart successfully.');
     }
 }

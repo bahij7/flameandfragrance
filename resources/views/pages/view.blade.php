@@ -136,7 +136,6 @@
         </div>
 
         <div class="bottom">
-            
                 <button type="submit">Add to Cart</button>
             </div>
         </form>

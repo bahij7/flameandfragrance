@@ -203,6 +203,71 @@ body{
     gap: 10px;
 }
 
+.order-details .status span{
+    font-size: 14px;
+}
+
+
+    .order-details .status .pending{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: fit-content;
+        background: #007bff;
+        border: 1px solid #48a0ff;
+        padding: 6px 14px;
+        font-size: 14px;
+        border-radius: 40px;
+    }
+
+    .order-details .status .processing{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: fit-content;
+        background: #28a745  ;
+        border: 1px solid #3fe967  ;
+        padding: 6px 14px;
+        font-size: 14px;
+        border-radius: 40px;
+    }
+
+
+    .order-details .status .on_delivering{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: fit-content;
+        background: #fd7e14 ;
+        border: 1px solid #ffa154 ;
+        color: black;
+        padding: 6px 14px;
+        font-size: 14px;
+        border-radius: 40px;
+    }
+
+    .order-details .status .delivered{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: fit-content;
+        background: #6f42c1  ;
+        border: 1px solid #8f5dec  ;
+        padding: 6px 14px;
+        font-size: 14px;
+        border-radius: 40px;
+    }
+    .order-details .status .cancelled{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: fit-content;
+        background: #dc3545  ;
+        border: 1px solid #ff4a5d  ;
+        padding: 6px 14px;
+        font-size: 14px;
+        border-radius: 40px;
+    }
     
 .order-details .client{
     width: 20%;

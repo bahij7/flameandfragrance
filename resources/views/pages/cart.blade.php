@@ -112,6 +112,16 @@
        
 
         <div class="cart-body">
+        
+            @php
+            $item = $cartItems->first();
+            @endphp  
+
+            <form action="{{route('cart.delete', $item->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">DELETE ALL ITEMS</button>
+            </form>
 
             <div class="cntr">
                 <div class="head">
@@ -120,11 +130,10 @@
                     <div class="price">COLOR</div>
                     <div class="quantity">QUANTITY</div>
                     <div class="totalPrice">TOTAL PRICE</div>
-                    <div class="action"></div>
                 </div>
             </div>
 
-        @foreach ($cartItems as $item)
+            @foreach ($cartItems as $item)
             <div class="cntr">
             <div class="head">
                 <div class="product"><img src="{{ asset($item->image) }}">{{ $item->name }}                    
@@ -133,13 +142,7 @@
                 <div class="price">{{ $item->pivot->color }}</div>
                 <div class="quantity">{{ $item->pivot->quantity }} </div>
                 <div class="totalPrice"> {{$item->price * $item->pivot->quantity }} MAD</div>
-                <div class="action">
-                    <form action="{{route('cart.delete', $item->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
+                
             </div>
         @endforeach
             </div>

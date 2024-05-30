@@ -187,7 +187,7 @@ body{
         all: unset;
         border-bottom: 1px solid rgba(255, 255, 255, 0.277);
         color: white;
-        width: 95%;
+        width: 75%;
         padding: 10px 8px;
         box-sizing: border-box;
         font-weight: 500;
@@ -201,6 +201,16 @@ body{
     box-sizing: border-box;
     border-radius: 100px;
     cursor: pointer;
+}
+
+select{
+    background: #1E1E1E;
+    color: white;
+    width: fit-content;
+    padding: 14px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
 }
 
 .product-body{

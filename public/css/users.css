@@ -76,12 +76,12 @@ body{
     justify-content: center;
 }
 
-.top .selected{
+.middle .selected{
     background: #F7C179;
     color: black;
 }
 
-.top .selected:hover{
+.middle .selected:hover{
     background: #ffaf46;
     color: black;
 }
@@ -150,139 +150,52 @@ body{
     font-size: 20px;
 }
 
-.stats{
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.card{
-    width: 32%;
-    height: 100%;
-    background: #2A2A2A;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-inline: 20px;
-    box-sizing: border-box;
-    border-radius: 14px;
-}
-
-.card span:first-child{
-    font-size: 12px;
-}
 
 
-.card span:last-child{
-    font-size: 26px;
-    font-weight: 600;
-}
 
-.card span a{
-    color: inherit;
-}
-
-.table{
-    width: 100%;
+.product-body{
+    width: 95%;
     height: fit-content;
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.left{
-    width: 66%;
-    height: 100%;
     background: #2A2A2A;
+    border-radius: 20px;
     box-sizing: border-box;
-    padding: 20px;
-    border-radius: 14px;
+    padding: 14px;
 }
 
-.left span, .right span{
+.head{
+    width: 100%;
+    display: flex;
+    align-items: center;
     font-size: 14px;
 }
+
+.name{
+    width: 30%;
+}
+
+.email{
+    width: 30%;
+}
+
+.role{
+    width: 20%;
+}
+
+.date{
+    width: 20%;
+}
+
+
+
+
 
 .body{
+    margin-top: 10px;
     width: 100%;
-}
-
-.body .head{
     display: flex;
     align-items: center;
-    margin-top: 10px;
     font-size: 14px;
-}
-
-.body .data a{
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 14px;
-    color: inherit;
-    text-decoration: none;
-}
-
-    .body .name{
-        width: 25%;
-    }
-    .body .price{
-        width: 25%;
-    }
-
-    .body .status{
-        width: 25%;
-    }
-
-    .body .date{
-        width: 25%;
-    }
-
-.right{
-    width: 32%;
-    height: 100%;
-    background: #2A2A2A;
-    background-image: url('../images/stats.png');
-    background-position: center;
-    background-size: cover;
-    box-sizing: border-box;
-    padding: 20px;
-    border-radius: 14px;
-}
-
-.right .name{
-    width: 70%;
-}
-.right .price{
-    width: 35%;
+    font-weight: 500;
 }
 
 
-.reviews{
-    width: 100%;
-    background: #2A2A2A;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    border-radius: 10px;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
-.reviews .data{
-    display: flex;
-    margin-top: 10px;
-}
-
-.reviews .head{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.reviews .head span:last-child a{
-    font-size: 12px;
-    color: inherit ;
-}

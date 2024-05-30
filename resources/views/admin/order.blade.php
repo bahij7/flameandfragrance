@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/order.css') }}">
     <style>
                     .dropdown {
                 position: relative;
@@ -57,18 +57,19 @@
 
             <div class="links">
                 <div class="top">
-                    <a href="/dashboard/" class="selected"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+                    <a href="/dashboard/"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
                 </div>
                 <div class="middle">
                     <span>Management</span>
                     <a href="/dashboard/products"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
-                    <a href="/dashboard/orders"><span class="material-symbols-outlined">list_alt</span> Orders</a>
+                    <a href="/dashboard/orders" class="selected"><span class="material-symbols-outlined">list_alt</span> Orders</a>
                     <a href="/dashboard/users"><span class="material-symbols-outlined">group</span> Users</a>
                     <a href="/dashboard/clients"><span class="material-symbols-outlined">group</span> Clients</a>
                     <span>Others</span>
                     <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
                     <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
                     <a href="/dashboard/faq"><span class="material-symbols-outlined">quiz</span> FAQ's</a>
+                    {{-- <a href="/dashboard/"><span class="material-symbols-outlined">reviews</span> Reviews</a> --}}
                 
                 
                 </div>
@@ -78,7 +79,7 @@
 
 
         <div class="main">
-            
+
             <div class="navbar">
                 <a href=""><span class="material-symbols-outlined">notifications</span>(0)</a>
                 <div class="dropdown">
@@ -96,126 +97,61 @@
                     </div>
                 </div>
             </div>
-
-            <div class="stats">
-                <div class="card">
-                    <span>🔥 TOP SELLING PRODUCT</span>
-                    <span><a href="{{route('product.show', $topSellingProduct->id)}}">{{ $topSellingProduct->name }}</a></span>
-                </div>
-
-                <div class="card">
-                    <span>🔢 TOTAL CLIENTS</span>
-                    <span>{{$clients}} Clients</span>
-                </div>
-
-                <div class="card">
-                    <span>💵 TOTAL REVENUE</span>
-                    <span>{{ $revenue }} MAD</span>
-                </div>
+        
+            <div class="order-head">
+                <span>{{$order->user->name}}'s Order</span>
+                <a href="{{route('order.edit', $order->id)}}">Edit</a>
             </div>
-
-            <div class="stats" style="margin-top: 2%">
-                <div class="card">
-                    <span>🔢 TOTAL PRODUCTS</span>
-                    <span>{{$products}} Products</span>
-                </div>
-
-                <div class="card">
-                    <span>🔢 TOTAL PACKS</span>
-                    <span>2 Packs</span>
-                </div>
-
-                <div class="card">
-                    <span>🔢 TOTAL ORDERS</span>
-                    <span>{{$orders}} Orders</span>
-                </div>
-            </div>
-
-            <div class="table">
-
-                <div class="left">
+            
+            <div class="order-body">
+            
                     <div class="head">
-                        <span>📦 LATEST ORDERS</span>
+                        <div class="on">Order Number</div>
+                        <div class="client">Client</div>
+                        <div class="phone">Phone</div>
+                        <div class="address">Address</div>
+                        <div class="status">Status</div>
+                        <div class="totalPrice">Total Price</div>
                     </div>
 
                     <div class="body">
-                        <div class="head">
-                            <div class="name">Name</div>
-                            <div class="price">Price</div>
-                            <div class="status">Status</div>
-                            <div class="date">Date</div>
-                        </div>
-                    @foreach ($latestOrders as $order)
-    
-                        <div class="data">
-                            <a href="{{route('order.show', $order->id)}}">
-                            <div class="name">{{ $order->user->name }}</div>
-                            <div class="price">{{ $order->totalPrice }} MAD</div>
-                            <div class="status">{{ $order->status}}</div>
-                            <div class="date">{{ $order->created_at->format('d M Y H:i') }}</div>
-                            </a>
-                        </div>
-                    @endforeach
-
-                    </div>
-                </div>
-
-                <div class="right">
-                    <div class="head">
-                        <span>💵 LATEST SALES</span>
+                        <div class="on">{{ $order->order_number }}</div>
+                        <div class="client">{{ $order->user->name }}</div>
+                        <div class="phone">{{ $order->phone }}</div>
+                        <div class="address">{{ $order->address }}</div>
+                        <div class="status">{{ $order->status }}</div>
+                        <div class="totalPrice">{{ $order->totalPrice }}</div>
                     </div>
 
-                    <div class="body">
-                        <div class="head">
-                            <div class="name">Name</div>
-                            <div class="price">Price</div>
-                        </div>
-
-                    @foreach ($sales as $sale)
-    
-                        <div class="data">
-                            <a href="{{route('order.show', $sale->id)}}">
-                            <div class="name">{{ $sale->user->name }}</div>
-                            <div class="price">{{ $sale->totalPrice }} MAD</div>
-                            </a>
-                        </div>
-
-                    @endforeach
-                    </div>
-                </div>
-
-            </div>
-
-            {{-- <div class="reviews">
-                <div class="head">
-                    <span>⭐ LATEST REVIEWS</span>
-                    <span> <a href=""> SEE ALL REVIEWS</a></span>
-                </div>
-
-                <div class="body">
-                    <div class="head">
-                        <div class="name">Name</div>
-                        <div class="price">Score</div>
-                        <div class="status">Product</div>
-                        <div class="date">Date</div>
-                    </div>
-
-                    <div class="data">
-                        <div class="name">Ahmed Bahij</div>
-                        <div class="price">5</div>
-                        <div class="status">UNICO AMOR</div>
-                        <div class="date">20 May 24 10:00AM</div>
-                    </div>
                     
-                    <div class="data">
-                        <div class="name">Niama Rez</div>
-                        <div class="price">4</div>
-                        <div class="status">UNICO AMOR</div>
-                        <div class="date">10 May 24 21:00PM</div>
-                    </div>
-                </div>
-            </div> --}}
+            </div>
 
+            <div class="order-foot">
+                <div class="top">
+                    <span>{{$order->user->name}}'s Products</span>
+                </div>
+
+                <div class="middle">
+                    @foreach ($order->orderLines as $orderLine)
+                    <div class="card">
+                        <div class="lside">
+                            <img src="{{ asset($orderLine->product->image) }}">
+                        </div>
+                        <div class="rside">
+                            <div class="name">
+                                x{{ $orderLine->quantity }} {{ $orderLine->product->name }}
+                                <span>Color: {{ $orderLine->color }}</span>
+                            </div>
+                            <div class="price">
+                                {{ $orderLine->price }} MAD
+                                <div class="tPrice">TOTAL PRICE: {{ $orderLine->total_price }} MAD</div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+            </div>
         </div>
 
         <script>

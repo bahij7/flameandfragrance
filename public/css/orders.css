@@ -76,12 +76,12 @@ body{
     justify-content: center;
 }
 
-.top .selected{
+.middle .selected{
     background: #F7C179;
     color: black;
 }
 
-.top .selected:hover{
+.middle .selected:hover{
     background: #ffaf46;
     color: black;
 }
@@ -150,139 +150,123 @@ body{
     font-size: 20px;
 }
 
-.stats{
-    width: 100%;
-    height: 20vh;
+
+
+.search-bar{
+    width: 95%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
 }
 
-.card{
-    width: 32%;
-    height: 100%;
-    background: #2A2A2A;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-inline: 20px;
+.search-bar input{
+        all: unset;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.277);
+        color: white;
+        width: 75%;
+        padding: 10px 8px;
+        box-sizing: border-box;
+        font-weight: 500;
+        margin-bottom: 3%;
+}
+
+.search-bar button{
+    all: unset;
+    width: 5%;
+    padding: 10px;
     box-sizing: border-box;
-    border-radius: 14px;
-}
-
-.card span:first-child{
-    font-size: 12px;
+    border-radius: 100px;
+    cursor: pointer;
 }
 
 
-.card span:last-child{
-    font-size: 26px;
-    font-weight: 600;
+.order-head select{
+    background: #1E1E1E;
+    color: white;
+    width: fit-content;
+    padding: 14px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
 }
 
-.card span a{
-    color: inherit;
-}
-
-.table{
-    width: 100%;
+.order-body{
+    width: 95%;
     height: fit-content;
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.left{
-    width: 66%;
-    height: 100%;
     background: #2A2A2A;
+    border-radius: 20px;
     box-sizing: border-box;
-    padding: 20px;
-    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 4%;
 }
 
-.left span, .right span{
+
+.head{
+    width: 100%;
+    display: flex;
+    align-items: center;
     font-size: 14px;
 }
+
+.on{
+    width: 15%;
+}
+
+.client{
+    width: 10%;
+}
+
+.address{
+    width: 20%;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.phone{
+    width: 20%;
+}
+
+
+.status{
+    width: 10%;
+}
+
+.price{
+    width: 10%;
+}
+
+.date{
+    width: 20%;
+}
+
+
+
+
 
 .body{
+    margin-top: 20px;
     width: 100%;
-}
-
-.body .head{
     display: flex;
     align-items: center;
-    margin-top: 10px;
     font-size: 14px;
+    font-weight: 500;
 }
 
-.body .data a{
+
+.body a{
+    margin-top: 20px;
+    width: 100%;
     display: flex;
     align-items: center;
-    margin-top: 10px;
     font-size: 14px;
+    font-weight: 500;
     color: inherit;
     text-decoration: none;
 }
 
-    .body .name{
-        width: 25%;
-    }
-    .body .price{
-        width: 25%;
-    }
 
-    .body .status{
-        width: 25%;
-    }
-
-    .body .date{
-        width: 25%;
-    }
-
-.right{
-    width: 32%;
-    height: 100%;
-    background: #2A2A2A;
-    background-image: url('../images/stats.png');
-    background-position: center;
-    background-size: cover;
-    box-sizing: border-box;
-    padding: 20px;
-    border-radius: 14px;
-}
-
-.right .name{
-    width: 70%;
-}
-.right .price{
-    width: 35%;
-}
-
-
-.reviews{
-    width: 100%;
-    background: #2A2A2A;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    border-radius: 10px;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
-.reviews .data{
-    display: flex;
-    margin-top: 10px;
-}
-
-.reviews .head{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.reviews .head span:last-child a{
-    font-size: 12px;
-    color: inherit ;
+.body .on{
+    text-decoration: underline;
 }

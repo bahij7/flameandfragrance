@@ -50,7 +50,7 @@ class CartController extends Controller
 
         $cart->items()->attach($product->id, ['quantity' => $quantity, 'color' => $color, 'price'=> $product->price]);
 
-        return redirect()->route('cart')->with('success', 'Product added to cart!');
+        return redirect()->back()->with('success', 'Product added to cart!');
     }
 
     public function delete($id)

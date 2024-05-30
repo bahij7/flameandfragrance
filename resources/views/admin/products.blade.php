@@ -62,8 +62,9 @@
             <div class="middle">
                 <span>Management</span>
                 <a href="/dashboard/products" class="selected"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">list_alt</span> Orders</a>
-                <a href="/dashboard/"><span class="material-symbols-outlined">group</span> Clients</a>
+                <a href="/dashboard/orders"><span class="material-symbols-outlined">list_alt</span> Orders</a>
+                <a href="/dashboard/users"><span class="material-symbols-outlined">group</span> Users</a>
+                <a href="/dashboard/clients"><span class="material-symbols-outlined">group</span> Clients</a>
                 <span>Others</span>
                 <a href="/dashboard/ad"><span class="material-symbols-outlined">ad</span> Advertise</a>
                 <a href="/dashboard/advantages"><span class="material-symbols-outlined">heart_plus</span> Advantages</a>
@@ -101,10 +102,22 @@
             <a href="/dashboard/products/create">Create New Product</a>
         </div>
 
-        <div class="search-bar">
-            <input type="text" placeholder="Search..">
+        
+
+        <form action="{{ route('product.search') }}" method="GET" class="search-bar">
+            <input type="text" name="query" placeholder="Search by product name or tag">
+            <select name="isPublished">
+                <option value="">All</option>
+                <option value="1">Public</option>
+                <option value="0">Private</option>
+            </select>
             <button type="submit"><span class="material-symbols-outlined">search</span></button>
+        </form>
+        @if($products->isEmpty())
+        <div class="product-body">
+            <span>No Product found.</span>
         </div>
+        @else
 
         <div class="product-body">
             <div class="head">
@@ -166,6 +179,7 @@
                 <div class="price">{{$product->price}} MAD</div>
             </div>
             @endforeach
+            @endif
         </div>
 
 

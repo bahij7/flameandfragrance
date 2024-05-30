@@ -142,24 +142,48 @@ class ProductController extends Controller
 }
 
 
-public function destroy($id)
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
+    }
+
+
+    public function publish($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $product->isPublished = !$product->isPublished;
+
+        $product->save();
+
+        return redirect()->route('product.show', ['id' => $product->id])->with('success', 'Product publish status toggled successfully!');
+    }
+
+
+    public function search(Request $request)
 {
-    $product = Product::findOrFail($id);
+    $query = $request->input('query');
+    $isPublished = $request->input('isPublished');
 
-    $product->delete();
+    $products = Product::query();
 
-    return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
+    if ($query) {
+        $products->where('name', 'like', "%$query%")
+                 ->orWhere('tags', 'like', "%$query%");
+    }
+
+    if ($isPublished !== null) {
+        $products->where('isPublished', $isPublished);
+    }
+
+    $products = $products->get();
+
+    return view('admin.products', compact('products'));
 }
 
 
-public function publish($id)
-{
-    $product = Product::findOrFail($id);
-
-    $product->isPublished = !$product->isPublished;
-
-    $product->save();
-
-    return redirect()->route('product.show', ['id' => $product->id])->with('success', 'Product publish status toggled successfully!');
-}
 }

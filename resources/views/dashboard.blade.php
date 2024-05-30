@@ -149,7 +149,21 @@
                             <a href="{{route('order.show', $order->id)}}">
                             <div class="name">{{ $order->user->name }}</div>
                             <div class="price">{{ $order->totalPrice }} MAD</div>
-                            <div class="status">{{ $order->status}}</div>
+                            <div class="status">
+                                @if($order->status == 'pending')
+                                    <div class="pending"><span class="material-symbols-outlined">schedule</span> Pending</div>
+                                @elseif($order->status == 'processing')
+                                    <div class="processing"><span class="material-symbols-outlined">candle</span> Processing</div>
+                                @elseif($order->status == 'on_delivering')
+                                    <div class="on_delivering"><span class="material-symbols-outlined">local_shipping</span> On Delivering</div>
+                                @elseif($order->status == 'delivered')
+                                    <div class="delivered"><span class="material-symbols-outlined">check_circle</span> Delivered</div>
+                                @elseif($order->status == 'cancelled')
+                                    <div class="cancelled"><span class="material-symbols-outlined">cancel</span> Cancelled</div>
+                                @else
+                                    {{ $order->status }}
+                                @endif
+                            </div> 
                             <div class="date">{{ $order->created_at->format('d M Y H:i') }}</div>
                             </a>
                         </div>

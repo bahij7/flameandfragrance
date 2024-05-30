@@ -240,6 +240,82 @@ select{
         width: 10%;
     }
 
+    .order-body .status{
+        width: 15%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .order-body .status span{
+        font-size: 14px;
+    }
+    
+    
+        .order-body .status .pending{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: fit-content;
+            background: #007bff;
+            border: 1px solid #48a0ff;
+            padding: 6px 14px;
+            font-size: 14px;
+            border-radius: 40px;
+        }
+    
+        .order-body .status .processing{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: fit-content;
+            background: #28a745  ;
+            border: 1px solid #3fe967  ;
+            padding: 6px 14px;
+            font-size: 14px;
+            border-radius: 40px;
+        }
+    
+    
+        .order-body .status .on_delivering{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: fit-content;
+            background: #fd7e14 ;
+            border: 1px solid #ffa154 ;
+            color: black;
+            padding: 6px 14px;
+            font-size: 14px;
+            border-radius: 40px;
+        }
+    
+        .order-body .status .delivered{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: fit-content;
+            background: #6f42c1  ;
+            border: 1px solid #8f5dec  ;
+            padding: 6px 14px;
+            font-size: 14px;
+            border-radius: 40px;
+        }
+        .order-body .status .cancelled{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: fit-content;
+            background: #dc3545  ;
+            border: 1px solid #ff4a5d  ;
+            padding: 6px 14px;
+            font-size: 14px;
+            border-radius: 40px;
+        }
+        
+
+
+
 
     .order-foot{
         width: 95%;

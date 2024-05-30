@@ -45,11 +45,47 @@
             .dropdown:hover .dropdown-menu {
                 display: block;
             }
+                .popup-message{
+    position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        background: #1E1E1E;
+        border: 1px solid #3d3d3d;
+        padding: 20px 30px;
+        border-radius: 10px;
+        opacity: 0;
+        animation: fadeInOut 8s ease-in-out forwards;
+    }
+
+    @keyframes fadeInOut {
+        0% {
+            top: 0;
+            opacity: 0;
+        }
+        20% {
+            top: 10%;
+            opacity: 1;
+        }
+        80% {
+            top: 10%;
+            opacity: 1;
+        }
+        100% {
+            top: 0%;
+            opacity: 0;
+        }
+    }
             </style>
             
 </head>
 <body>
-
+    @if(session('success'))
+        <div class="popup-message">
+            {{ session('success') }}
+        </div>
+    @endif
         <div class="sidebar">
             <div class="logo">
                 <a href="/"> FLAME & <br>FRAGRANCE</a>
@@ -116,8 +152,22 @@
                         <div class="client">{{ $order->user->name }}</div>
                         <div class="phone">{{ $order->phone }}</div>
                         <div class="address">{{ $order->address }}</div>
-                        <div class="status">{{ $order->status }}</div>
-                        <div class="totalPrice">{{ $order->totalPrice }}</div>
+                        <div class="status">
+                            @if($order->status == 'pending')
+                                <div class="pending"><span class="material-symbols-outlined">schedule</span> Pending</div>
+                            @elseif($order->status == 'processing')
+                                <div class="processing"><span class="material-symbols-outlined">candle</span> Processing</div>
+                            @elseif($order->status == 'on_delivering')
+                                <div class="on_delivering"><span class="material-symbols-outlined">local_shipping</span> On Delivering</div>
+                            @elseif($order->status == 'delivered')
+                                <div class="delivered"><span class="material-symbols-outlined">check_circle</span> Delivered</div>
+                            @elseif($order->status == 'cancelled')
+                                <div class="cancelled"><span class="material-symbols-outlined">cancel</span> Cancelled</div>
+                            @else
+                                {{ $order->status }}
+                            @endif
+                        </div>                        
+                    <div class="totalPrice">{{ $order->totalPrice }}</div>
                     </div>
 
                     

@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Checking Out..</title>
+    <title>Products | Flame & Fragrance</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/confirmed.css') }}">  
     <style>
         .actions {
             display: flex;
@@ -98,74 +98,76 @@
         </div>
     </div>
 
-   
+    <div class="confirm">
+         
+        <div class="confirm-head">
+            <span>Thank you {{Auth::user()->name}}.</span>
+        </div>
+        <div class="confirm-body">
 
-    <div class="checkout">
-
-
-        <div class="left">
-            <span>Fill the form carrefully please.</span>
-            
-            <form action="{{ route('checkout.confirm') }}" method="POST">
-            @csrf
-                <div class="top">
-                    <input type="text" placeholder="Name*" value="{{Auth::user()->name}}" readonly/>
-                    <input type="tel" name="phone" placeholder="Phone Number*" required/>
+            <div class="cntr">
+                <div class="head">
+                    <div class="on">ORDER NUMBER</div>
+                    <div class="phone">PHONE</div>
+                    <div class="address">ADDRESS</div>
+                    <div class="status">STATUS</div>
+                    <div class="totalPrice">TOTAL PRICE</div>
                 </div>
-                <input type="email" placeholder="Email" value="{{Auth::user()->email}}" readonly/>
+            </div>
 
-                <textarea placeholder="Address*" name="address" required></textarea>
-                <button type="submit">CONFIRM ORDER</button>
+            <div class="cntr">
+                <div class="head">
+                    <div class="on">{{ $order->order_number }}</div>
+                    <div class="phone">{{ $order->phone }}</div>
+                    <div class="address">{{ $order->address }}</div>
+                    <div class="status">{{ $order->status }}</div>
+                    <div class="totalPrice">{{ $order->totalPrice }}</div>
+                </div>
+            </div>
 
-            
-            </form>
+
+       
+    </div>
+
+
+    <div class="confirm-foot">
+        <div class="top">
+            <span>Products you orderd :</span>
         </div>
 
-
-        <div class="right">
-            @php
-                $totalPrice = 0; 
-            @endphp
-            @foreach ($cartItems as $item)
-
+        <div class="middle">
+            @foreach ($orderLines as $orderLine)
             <div class="card">
                 <div class="lside">
-                    <img src="{{asset($item->image)}}">
+                    <img src="{{ asset($orderLine->product->image) }}">
                 </div>
                 <div class="rside">
                     <div class="name">
-                        x{{$item->pivot->quantity}} {{$item->name}}
-                        <span>Color : {{$item->pivot->color}}</span>
+                        x{{ $orderLine->quantity }} {{$orderLine->product->name}}
+                        <span>Color : {{ $orderLine->color }}</span>
                     </div>
                     <div class="price">
-                        {{$item->price}} MAD
-                        <div class="tPrice">TOTAL PRICE : {{$item->price * $item->pivot->quantity}} MAD</div>
+                        {{ $orderLine->price }} MAD
+                        <div class="tPrice">TOTAL PRICE : {{ $orderLine->total_price }} MAD</div>
                     </div>
                     
                 </div>
             </div>
-            @php
-                $totalPrice += $item->price * $item->pivot->quantity;
-            @endphp
-            @endforeach
-
-
-
-
-            <div class="total">
-                TOTAL PRICE : {{ number_format($totalPrice, 2) }} MAD
-                <span>🚨 Keep in mind that shipping all over morocco cost 35.00 MAD (Free delivery in Guelmim)</span>
-            </div>
         </div>
 
 
+        <div class="bottom">
+            <a href="/track">TRACK ORDER</a>
+        </div>
 
 
     </div>
 
 
 
-    <div class="footer">
+
+
+    {{-- <div class="footer">
         <div class="top">
             <div class="left">
                 Flame & Fragrance © 2024
@@ -185,7 +187,7 @@
                 <a href="">Tik Tok</a>
             </div>
         </div>
-    </div>  
+    </div>   --}}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

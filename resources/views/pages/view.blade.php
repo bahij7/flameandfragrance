@@ -74,6 +74,7 @@
                         <a id="userDropdown" class="dropdown-toggle"><span class="material-symbols-outlined">account_circle</span> {{ Auth::user()->name }}</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/profile">Profile</a>
+                            <a class="dropdown-item" href="/track">Track Orders</a>
                             @if (Auth::user()->role === 'admin')
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
                             @endif

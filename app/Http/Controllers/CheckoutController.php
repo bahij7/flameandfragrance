@@ -63,6 +63,7 @@ class CheckoutController extends Controller
             $orderLine->total_price = $totalProductPrice;
     
             $orderLine->save();
+            
         }
     
         $order->totalPrice = $totalOrderPrice;
@@ -72,5 +73,11 @@ class CheckoutController extends Controller
     
         return redirect()->route('product')->with('success', 'Your order has been confirmed.');
     }
+
+    public function confirmed() {
+
+        return view('pages.confirm');
+    }
+    
     
 }

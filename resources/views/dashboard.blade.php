@@ -105,7 +105,7 @@
 
                 <div class="card">
                     <span>🔢 TOTAL CLIENTS</span>
-                    <span>59 Clients</span>
+                    <span>{{$clients}} Clients</span>
                 </div>
 
                 <div class="card">
@@ -127,7 +127,7 @@
 
                 <div class="card">
                     <span>🔢 TOTAL ORDERS</span>
-                    <span>12 Orders</span>
+                    <span>{{$orders}} Orders</span>
                 </div>
             </div>
 

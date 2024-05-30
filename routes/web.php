@@ -25,6 +25,7 @@ Route::delete('/cart/delete/{id}', [CartController::class, 'delete'])->name('car
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm');
+Route::get('/confirmed', [CheckoutController::class, 'confirmed'])->name('checkout.confirmed');
 
 
 

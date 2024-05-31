@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Review;
+use App\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -66,5 +67,10 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
 }

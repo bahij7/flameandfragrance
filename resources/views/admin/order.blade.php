@@ -167,7 +167,7 @@
                                 {{ $order->status }}
                             @endif
                         </div>                        
-                    <div class="totalPrice">{{ $order->totalPrice }}</div>
+                    <div class="totalPrice">{{ $order->totalPrice }} MAD</div>
                     </div>
 
                     

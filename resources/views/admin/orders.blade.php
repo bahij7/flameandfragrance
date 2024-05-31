@@ -148,7 +148,7 @@
                                 {{ $order->status }}
                             @endif
                         </div> 
-                        <div class="price">{{ $order->totalPrice }}</div>
+                        <div class="price">{{ $order->totalPrice }} MAD</div>
                         <div class="date">{{ $order->created_at->format('d M Y H:i') }}</div>
                     </a>
                 </div>

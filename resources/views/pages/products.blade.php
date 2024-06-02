@@ -100,7 +100,6 @@
 
     <div class="products">
         <div class="product-head">
-            <a href="">SEE OUR PACKS 🎁</a>
             <form action="{{ route('product') }}" method="GET">
                 <select name="sort" onchange="this.form.submit()">
                     <option value="" selected>SORT BY</option>

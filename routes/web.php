@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -67,9 +68,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/dashboard/ad/update', [AdsController::class, 'update'])->name('ad.update');
     Route::delete('/dashboard/ad/{id}', [AdsController::class, 'destroy'])->name('ad.delete');
 
-    Route::get('/dashboard/advantages', [AdvantagesController::class, 'index']);
-    Route::post('/dashboard/advantages/store', [AdvantagesController::class, 'store'])->name('advantages.store');
 
+    Route::get('/dashboard/notifications', [NotificationsController::class, 'index']);
 
 
 

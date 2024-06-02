@@ -185,6 +185,10 @@ body{
     color: inherit;
 }
 
+.statstwo .card:last-child{
+    width: 66%;
+}
+
 .table{
     width: 100%;
     height: fit-content;

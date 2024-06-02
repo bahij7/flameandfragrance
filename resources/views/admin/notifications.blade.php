@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/notif.css') }}">
     <style>
                     .dropdown {
                 position: relative;
@@ -95,126 +95,59 @@
                 </div>
             </div>
 
-            <div class="stats">
-                <div class="card">
-                    <span>🔥 TOP SELLING PRODUCT</span>
-                    <span>
-                        @if($orders>1)
-                        <a href="{{route('product.show', $topSellingProduct->id)}}">{{ $topSellingProduct->name }}</a>
-                        @else
-                        Not Calculated yet
-                        @endif
-                    </span>
+   
+            <div class="notifications">
+                <div class="notif-head">
+                    Notifications
                 </div>
 
-                <div class="card">
-                    <span>🔢 TOTAL CLIENTS</span>
-                    <span>{{$clients}} Clients</span>
-                </div>
+                <div class="notif-body">
 
-                <div class="card">
-                    <span>💵 TOTAL REVENUE</span>
-                    <span>{{ $revenue }} MAD</span>
+                    <a href="">
+                        <div class="notif">
+                            <div class="head">
+                                <div class="title">
+                                    <div class="dot"></div>A New Order from <span>Ahmed</span>
+                                </div>
+                                <div class="actions">
+                                    <button>Mark as read</button>
+                                    <button>Delete</button>
+                                </div>
+                            </div>
+                            <div class="body">
+                                x4 Mini bubble, x2 Bougie Rouge, 205 MAD
+                            </div>
+
+                            <div class="foot">
+                                10:20AM 31 May 24
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="">
+                        <div class="notif">
+                            <div class="head">
+                                <div class="title">
+                                    <div class="dot"></div>A New Order from <span>Ahmed</span>
+                                </div>
+                                <div class="actions">
+                                    <button>Mark as read</button>
+                                    <button>Delete</button>
+                                </div>
+                            </div>
+                            <div class="body">
+                                x4 Mini bubble, x2 Bougie Rouge, 205 MAD
+                            </div>
+
+                            <div class="foot">
+                                10:20AM 31 May 24
+                            </div>
+                        </div>
+                    </a>
+
+
                 </div>
             </div>
-
-            <div class="stats statstwo" style="margin-top: 2%">
-                <div class="card">
-                    <span>🔢 TOTAL PRODUCTS</span>
-                    <span>{{$products}} Products</span>
-                </div>
-
-                
-
-                <div class="card">
-                    <span>🔢 TOTAL ORDERS</span>
-                    <span>{{$orders}} Orders</span>
-                </div>
-            </div>
-
-            <div class="table">
-
-                <div class="left">
-                    <div class="head">
-                        <span>📦 LATEST ORDERS</span>
-                    </div>
-
-                    <div class="body">
-                        <div class="head">
-                            <div class="name">Name</div>
-                            <div class="price">Price</div>
-                            <div class="status">Status</div>
-                            <div class="date">Date</div>
-                        </div>
-                        
-    
-                        <div class="data">
-                            @if($latestOrders)
-                    @foreach ($latestOrders as $order)
-                            <a href="{{route('order.show', $order->id)}}">
-                            <div class="name">{{ $order->user->name }}</div>
-                            <div class="price">{{ $order->totalPrice }} MAD</div>
-                            <div class="status">
-                                @if($order->status == 'pending')
-                                    <div class="pending"><span class="material-symbols-outlined">schedule</span> Pending</div>
-                                @elseif($order->status == 'processing')
-                                    <div class="processing"><span class="material-symbols-outlined">candle</span> Processing</div>
-                                @elseif($order->status == 'on_delivering')
-                                    <div class="on_delivering"><span class="material-symbols-outlined">local_shipping</span> On Delivering</div>
-                                @elseif($order->status == 'delivered')
-                                    <div class="delivered"><span class="material-symbols-outlined">check_circle</span> Delivered</div>
-                                @elseif($order->status == 'cancelled')
-                                    <div class="cancelled"><span class="material-symbols-outlined">cancel</span> Cancelled</div>
-                                @else
-                                    {{ $order->status }}
-                                @endif
-                            </div> 
-                            <div class="date">{{ $order->created_at->format('d M Y H:i') }}</div>
-                            </a>
-                            @endforeach
-                            @else
-                            No Sales right now
-                            @endif
-                        </div>
-                    
-
-                    </div>
-                </div>
-
-                <div class="right">
-                    @if($sales)
-                            
-                    <div class="head">
-                        <span>💵 LATEST SALES</span>
-                    </div>
-
-                    <div class="body">
-                        
-                        <div class="head">
-                            <div class="name">Name</div>
-                            <div class="price">Price</div>
-                        </div>
-
-                        
-                        <div class="data">
-                            @foreach ($sales as $sale)
-                            <a href="{{route('order.show', $sale->id)}}">
-                            <div class="name">{{ $sale->user->name }}</div>
-                            <div class="price">{{ $sale->totalPrice }} MAD</div>
-                            </a>
-                            @endforeach
-                            
-                        </div>
-
-                    </div>
-                    @else
-                            No Sales right now
-                            @endif
-                </div>
-
-            </div>
-
-           
 
         </div>
 

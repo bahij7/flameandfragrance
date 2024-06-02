@@ -41,8 +41,7 @@
 
                     </div>
                 <div class="foot">
-                    <a href="/auth/google/redirect">Sign up With Google</a>
-                    <a href="/auth/facebook/redirect">Sign up With Facebook</a>
+               
                     <button type="submit">Register</button>
                     <span>Already have an account? <a href="{{ route('login') }}">Login</a></span>
                 </div>

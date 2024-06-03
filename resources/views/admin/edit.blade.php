@@ -123,12 +123,6 @@
                             <option value="Hot">Hot</option>
                         </select>
 
-                        <select id="pack_id" name="pack_id">
-                            <option value="" selected>Product's Pack</option>
-                            @foreach($packs as $pack)
-                                <option value="{{ $pack->id }}">{{ $pack->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     
                     <div class="file-container">

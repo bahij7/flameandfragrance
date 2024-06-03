@@ -128,7 +128,6 @@
     <div class="picks">
         <div class="picks-head">
             <span>TOP PICKS 🔥</span>
-            <span>PACKS</span>
         </div>
         <div class="picks-body">
 

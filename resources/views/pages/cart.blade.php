@@ -169,11 +169,7 @@
             <div class="left">
                 Flame & Fragrance © 2024
             </div>
-            <div class="right">
-                Switch to
-                <a href="">Arabic</a>
-                <a href="">French</a>
-            </div>
+            
         </div>
         <div class="bottom">
             <div class="left">

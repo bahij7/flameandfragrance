@@ -81,7 +81,6 @@
 
     <div class="main">
         <div class="navbar">
-            <a href=""><span class="material-symbols-outlined">notifications</span>(0)</a>
             <div class="dropdown">
                 <a id="userDropdown" class="dropdown-toggle"><span class="material-symbols-outlined">account_circle</span> {{ Auth::user()->name }}</a>
                 <div class="dropdown-menu">

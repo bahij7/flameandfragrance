@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 
 class OrdersController extends Controller
 {
+
     public function index(){
+        $user = Auth()->user();
+        $orders = $user->orders()->get();
+
+        return view('pages.orders', compact('orders'));
+    }
+
+
+    public function admin(){
         $order = Order::count();
         $orders = Order::all();
 
@@ -42,6 +52,29 @@ class OrdersController extends Controller
         return view('admin.orders', compact('orders', 'order'));
     }
 
+    public function display($orderNumber)
+    {
+        $order = Order::where('order_number', $orderNumber)->firstOrFail();
+
+        if (Auth::check() && $order->user_id !== Auth::user()->id) {
+            return redireect()->back();
+        }
+    
+        return view('pages.order', compact('order'));
+    }
+
+    public function delete(Request $request, $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+        
+        if ($request->user()->id !== $order->user_id) {
+            return redirect()->back()->with('error', 'You are not authorized to delete this order.');
+        }
+        
+        $order->delete();
+
+        return redirect()->route('order')->with('success', 'Order cancelled successfully.');
+    }
 
     public function show($id)
     {

@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\orderLine;
+use App\Models\Notification;
+use App\Notifications\NewOrderNotification;
+
 
 
 class CheckoutController extends Controller
@@ -71,7 +74,7 @@ class CheckoutController extends Controller
         $user->cart->items()->detach();
        
     
-        return redirect()->route('cart')->with('success', 'Your order is confirmed!');
+        return redirect()->route('order')->with('success', 'Your order is confirmed!');
     }
 
     public function confirmed() {

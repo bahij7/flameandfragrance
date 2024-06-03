@@ -95,59 +95,54 @@
                 </div>
             </div>
 
-   
             <div class="notifications">
                 <div class="notif-head">
                     Notifications
                 </div>
 
                 <div class="notif-body">
-
-                    <a href="">
-                        <div class="notif">
+@php
+    $notifications = auth()->user()->notifications;
+@endphp
+                    @foreach($notifications as $notification)
+                    @php
+                        $data = json_decode($notification->data);
+                    @endphp
+                    <a href="{{route('order.show', $data->order_id )}}">
+                        <div class="notif {{ $notification->read ? 'read' : 'unread' }}">
                             <div class="head">
                                 <div class="title">
-                                    <div class="dot"></div>A New Order from <span>Ahmed</span>
+                                    <div class="dot"></div>A New Order from <span>{{ $data->user_name }}</span>
                                 </div>
                                 <div class="actions">
-                                    <button>Mark as read</button>
-                                    <button>Delete</button>
+                                    @if(!$notification->read)
+                                    <form action="{{ route('notifications.markAsRead', $notification->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <button type="submit">Mark as Read</button>
+                                    </form>
+                                @endif
+                        
+                                <form action="{{ route('notifications.delete', $notification->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
                                 </div>
                             </div>
                             <div class="body">
-                                x4 Mini bubble, x2 Bougie Rouge, 205 MAD
+                                {{ $data->order_number }}
                             </div>
 
                             <div class="foot">
-                                10:20AM 31 May 24
+                                {{ $data->created_at }}
                             </div>
                         </div>
                     </a>
 
-                    <a href="">
-                        <div class="notif">
-                            <div class="head">
-                                <div class="title">
-                                    <div class="dot"></div>A New Order from <span>Ahmed</span>
-                                </div>
-                                <div class="actions">
-                                    <button>Mark as read</button>
-                                    <button>Delete</button>
-                                </div>
-                            </div>
-                            <div class="body">
-                                x4 Mini bubble, x2 Bougie Rouge, 205 MAD
-                            </div>
-
-                            <div class="foot">
-                                10:20AM 31 May 24
-                            </div>
-                        </div>
-                    </a>
-
-
+                    @endforeach
                 </div>
             </div>
+            
 
         </div>
 

@@ -28,7 +28,12 @@ Route::delete('/cart/delete/{id}', [CartController::class, 'delete'])->name('car
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm');
-Route::get('/confirmed', [CheckoutController::class, 'confirmed'])->name('checkout.confirmed');
+
+Route::get('/orders', [OrdersController::class, 'index'])->name('order');
+Route::get('/orders/{orderNumber}', [OrdersController::class, 'display'])->name('order.display');
+Route::delete('/orders/{orderId}', [OrdersController::class, 'delete'])->name('order.delete');
+
+
 
 Route::get('/track', [OrdersController::class, 'trackOrderPage'])->name('track.order');
 Route::post('/track', [OrdersController::class, 'trackOrder'])->name('track.order.submit');
@@ -53,7 +58,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/dashboard/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/dashboard/clients', [UsersController::class, 'client'])->name('clients.index');
 
-    Route::get('/dashboard/orders', [OrdersController::class, 'index'])->name('order.index');
+    Route::get('/dashboard/orders', [OrdersController::class, 'admin'])->name('order.index');
     Route::get('/dashboard/orders/search', [OrdersController::class, 'search'])->name('order.search');
     Route::get('/dashboard/orders/{id}', [OrdersController::class, 'show'])->name('order.show');
     Route::get('/dashboard/orders/{id}/edit', [OrdersController::class, 'edit'])->name('order.edit');
@@ -67,9 +72,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/dashboard/ad/store', [AdsController::class, 'store'])->name('ad.store');
     Route::put('/dashboard/ad/update', [AdsController::class, 'update'])->name('ad.update');
     Route::delete('/dashboard/ad/{id}', [AdsController::class, 'destroy'])->name('ad.delete');
-
-
-    Route::get('/dashboard/notifications', [NotificationsController::class, 'index']);
 
 
 

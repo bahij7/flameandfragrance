@@ -208,7 +208,7 @@ body{
             font-weight: 600;
         }
 
-        .head button{
+        form button{
             all: unset;
             color: inherit;
             text-decoration: none;
@@ -224,11 +224,14 @@ body{
             cursor: pointer;
         }
 
-        .head button:last-child{
+        .head .actions form:last-child button{
             background: #bb2124 ;
             color: white;
         }
 
+        .read{
+            opacity: 50%;
+        }
 
     .foot{
         font-size: 12px;

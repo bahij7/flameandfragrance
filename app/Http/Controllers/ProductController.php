@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Product;
-use App\Models\Pack;
 
 class ProductController extends Controller
 {
@@ -43,8 +42,7 @@ class ProductController extends Controller
     }
 
     public function create(){
-        $packs = Pack::all();
-        return view('admin.create', compact('packs'));
+        return view('admin.create');
     }
 
     public function store(Request $request){

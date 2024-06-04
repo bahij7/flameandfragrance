@@ -10,7 +10,7 @@ body{
     background: #010100;
     color: white;
     box-sizing: border-box;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 ::-webkit-scrollbar {
